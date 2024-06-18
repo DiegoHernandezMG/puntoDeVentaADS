@@ -5,7 +5,7 @@
 package Modelo;
 
 
-import VISTAS.Buscador;
+import VISTAS.buscador;
 import VISTAS.Ingreso;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -50,7 +50,7 @@ public class M_Ingreso extends conexion {
           }else{
                 JOptionPane.showMessageDialog(null,"login sucesful");
                 
-                new Buscador().show();
+                new buscador().show();
             }
             
         }catch(Exception e){

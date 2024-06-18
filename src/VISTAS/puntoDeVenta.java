@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package VISTAS;
-
+import javax.swing.*;
+import java.awt.*;
 /**
  *
  * @author diego
@@ -15,6 +16,23 @@ public class puntoDeVenta extends javax.swing.JFrame {
      */
     public puntoDeVenta() {
         initComponents();
+        
+        PointerInfo pointerInfo = MouseInfo.getPointerInfo();
+        GraphicsDevice gd = pointerInfo.getDevice();
+        Rectangle bounds = gd.getDefaultConfiguration().getBounds();
+
+        // Obtener las dimensiones del formulario
+        int frameWidth = 400;  // Ancho del formulario
+        int frameHeight = 430; // Alto del formulario
+
+        // Calcular las coordenadas para centrar el formulario
+        int x = bounds.x + (bounds.width - frameWidth) / 2;
+        int y = bounds.y + (bounds.height - frameHeight) / 2;
+
+        //this.setSize(frameWidth, frameHeight);
+        this.setLocation(x, y);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
     }
 
     /**
@@ -90,11 +108,13 @@ public class puntoDeVenta extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
         );
 
         pack();

@@ -3,18 +3,36 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package VISTAS;
-
+import javax.swing.*;
+import java.awt.*;
 /**
  *
  * @author diego
  */
-public class Buscador extends javax.swing.JFrame {
+public class buscador extends javax.swing.JFrame {
 
     /**
      * Creates new form buscador
      */
-    public Buscador() {
+    public buscador() {
         initComponents();
+        
+        PointerInfo pointerInfo = MouseInfo.getPointerInfo();
+        GraphicsDevice gd = pointerInfo.getDevice();
+        Rectangle bounds = gd.getDefaultConfiguration().getBounds();
+
+        // Obtener las dimensiones del formulario
+        int frameWidth = 400;  // Ancho del formulario
+        int frameHeight = 430; // Alto del formulario
+
+        // Calcular las coordenadas para centrar el formulario
+        int x = bounds.x + (bounds.width - frameWidth) / 2;
+        int y = bounds.y + (bounds.height - frameHeight) / 2;
+
+        //this.setSize(frameWidth, frameHeight);
+        this.setLocation(x, y);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
     }
 
     /**
@@ -174,21 +192,20 @@ public class Buscador extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Buscador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(buscador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Buscador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(buscador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Buscador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(buscador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Buscador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(buscador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Buscador().setVisible(true);
+                new buscador().setVisible(true);
             }
         });
     }

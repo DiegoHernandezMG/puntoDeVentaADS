@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package VISTAS;
-
+import javax.swing.*;
+import java.awt.*;
 /**
  *
  * @author diego
@@ -15,6 +16,23 @@ public class ingresoVendedor extends javax.swing.JFrame {
      */
     public ingresoVendedor() {
         initComponents();
+        
+        PointerInfo pointerInfo = MouseInfo.getPointerInfo();
+        GraphicsDevice gd = pointerInfo.getDevice();
+        Rectangle bounds = gd.getDefaultConfiguration().getBounds();
+
+        // Obtener las dimensiones del formulario
+        int frameWidth = 400;  // Ancho del formulario
+        int frameHeight = 430; // Alto del formulario
+
+        // Calcular las coordenadas para centrar el formulario
+        int x = bounds.x + (bounds.width - frameWidth) / 2;
+        int y = bounds.y + (bounds.height - frameHeight) / 2;
+
+        //this.setSize(frameWidth, frameHeight);
+        this.setLocation(x, y);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
     }
 
     /**
