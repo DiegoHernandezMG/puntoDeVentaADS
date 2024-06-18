@@ -50,11 +50,12 @@ public class Ingreso extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txt_usuario = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jButtonSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btn_iniciarsesion = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         txt_contraseña = new javax.swing.JPasswordField();
+        jButtonIngresoAdmin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,16 +79,16 @@ public class Ingreso extends javax.swing.JFrame {
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
         jPanel1.add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 190, 30));
 
-        jButton1.setBackground(new java.awt.Color(153, 153, 153));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("REGRESAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSalir.setBackground(new java.awt.Color(153, 153, 153));
+        jButtonSalir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonSalir.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSalir.setText("SALIR");
+        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, -1, 40));
+        jPanel1.add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, -1, 40));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 153, 255));
@@ -103,7 +104,7 @@ public class Ingreso extends javax.swing.JFrame {
                 btn_iniciarsesionActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_iniciarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 200, 40));
+        jPanel1.add(btn_iniciarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 200, 40));
 
         jPanel4.setBackground(new java.awt.Color(204, 255, 0));
 
@@ -121,27 +122,49 @@ public class Ingreso extends javax.swing.JFrame {
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 100, 70));
         jPanel1.add(txt_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 190, 30));
 
+        jButtonIngresoAdmin.setBackground(new java.awt.Color(255, 204, 204));
+        jButtonIngresoAdmin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonIngresoAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonIngresoAdmin.setText("Ingresar como administrador");
+        jButtonIngresoAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIngresoAdminActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonIngresoAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 230, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
+        this.dispose();  // Cerrar el formulario actual
+        System.exit(0);  // Finalizar la aplicación
+    }//GEN-LAST:event_jButtonSalirActionPerformed
 
     private void btn_iniciarsesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciarsesionActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        new puntoDeVenta().setVisible(true);
     }//GEN-LAST:event_btn_iniciarsesionActionPerformed
+
+    private void jButtonIngresoAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngresoAdminActionPerformed
+        this.setVisible(false);
+        new ingresoAdmin().setVisible(true);
+    }//GEN-LAST:event_jButtonIngresoAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,7 +206,8 @@ public class Ingreso extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btn_iniciarsesion;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonIngresoAdmin;
+    private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;

@@ -48,8 +48,8 @@ public class pagoTarjeta extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jButtonValidar = new javax.swing.JButton();
+        jButtonRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,27 +65,27 @@ public class pagoTarjeta extends javax.swing.JFrame {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 240, -1));
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 330, 30));
 
-        jButton4.setBackground(new java.awt.Color(204, 204, 255));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("PAGAR");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonValidar.setBackground(new java.awt.Color(204, 204, 255));
+        jButtonValidar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonValidar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonValidar.setText("VALIDAR");
+        jButtonValidar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonValidarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 160, 40));
+        jPanel1.add(jButtonValidar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 160, 40));
 
-        jButton1.setBackground(new java.awt.Color(153, 153, 153));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("REGRESAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRegresar.setBackground(new java.awt.Color(153, 153, 153));
+        jButtonRegresar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonRegresar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonRegresar.setText("REGRESAR");
+        jButtonRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonRegresarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 160, 40));
+        jPanel1.add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 160, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,13 +101,15 @@ public class pagoTarjeta extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void jButtonValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValidarActionPerformed
+        //this.setVisible(false);
+        new validarNIP().setVisible(true);
+    }//GEN-LAST:event_jButtonValidarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
+        this.setVisible(false);
+        new listaDeVenta().setVisible(true);
+    }//GEN-LAST:event_jButtonRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,8 +147,8 @@ public class pagoTarjeta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButtonRegresar;
+    private javax.swing.JButton jButtonValidar;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;

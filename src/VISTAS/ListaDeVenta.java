@@ -59,8 +59,8 @@ public class listaDeVenta extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonRegresar = new javax.swing.JButton();
+        jButtonPagoTarjeta = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -201,27 +201,27 @@ public class listaDeVenta extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 270, 190));
 
-        jButton1.setBackground(new java.awt.Color(153, 153, 153));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("REGRESAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRegresar.setBackground(new java.awt.Color(153, 153, 153));
+        jButtonRegresar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonRegresar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonRegresar.setText("REGRESAR");
+        jButtonRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonRegresarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(302, 370, 160, 40));
+        jPanel1.add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(302, 370, 160, 40));
 
-        jButton2.setBackground(new java.awt.Color(102, 204, 255));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("PAGAR - TARJETA");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPagoTarjeta.setBackground(new java.awt.Color(102, 204, 255));
+        jButtonPagoTarjeta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonPagoTarjeta.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonPagoTarjeta.setText("PAGAR - TARJETA");
+        jButtonPagoTarjeta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonPagoTarjetaActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 160, 40));
+        jPanel1.add(jButtonPagoTarjeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 160, 40));
 
         jButton3.setBackground(new java.awt.Color(255, 204, 204));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -278,13 +278,15 @@ public class listaDeVenta extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
+        this.setVisible(false);
+        new puntoDeVenta().setVisible(true);
+    }//GEN-LAST:event_jButtonRegresarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jButtonPagoTarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPagoTarjetaActionPerformed
+        this.setVisible(false);
+        new pagoTarjeta().setVisible(true);
+    }//GEN-LAST:event_jButtonPagoTarjetaActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -334,10 +336,10 @@ public class listaDeVenta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButtonPagoTarjeta;
+    private javax.swing.JButton jButtonRegresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
