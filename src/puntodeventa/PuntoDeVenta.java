@@ -18,6 +18,8 @@ public class PuntoDeVenta {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        
          Ingreso ingreso= new Ingreso();
         M_Ingreso m_ingreso=new M_Ingreso();
         C_ingreso c_ingreso = new C_ingreso(ingreso, m_ingreso);

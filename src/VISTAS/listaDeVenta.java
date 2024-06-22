@@ -62,16 +62,16 @@ public class listaDeVenta extends javax.swing.JFrame {
         jButtonRegresar = new javax.swing.JButton();
         jButtonPagoTarjeta = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        lbl_lista = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel2.setBackground(new java.awt.Color(255, 136, 130));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -124,7 +124,7 @@ public class listaDeVenta extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 160, 130));
 
-        jPanel3.setBackground(new java.awt.Color(235, 235, 235));
+        jPanel3.setBackground(new java.awt.Color(211, 211, 211));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setText("Vendedor:");
@@ -144,7 +144,7 @@ public class listaDeVenta extends javax.swing.JFrame {
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 153, 204));
+        jLabel11.setForeground(new java.awt.Color(209, 59, 83));
         jLabel11.setText("$100");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -201,7 +201,7 @@ public class listaDeVenta extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 270, 190));
 
-        jButtonRegresar.setBackground(new java.awt.Color(153, 153, 153));
+        jButtonRegresar.setBackground(new java.awt.Color(209, 59, 83));
         jButtonRegresar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonRegresar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonRegresar.setText("REGRESAR");
@@ -212,7 +212,7 @@ public class listaDeVenta extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(302, 370, 160, 40));
 
-        jButtonPagoTarjeta.setBackground(new java.awt.Color(102, 204, 255));
+        jButtonPagoTarjeta.setBackground(new java.awt.Color(209, 59, 83));
         jButtonPagoTarjeta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonPagoTarjeta.setForeground(new java.awt.Color(255, 255, 255));
         jButtonPagoTarjeta.setText("PAGAR - TARJETA");
@@ -223,7 +223,7 @@ public class listaDeVenta extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonPagoTarjeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 160, 40));
 
-        jButton3.setBackground(new java.awt.Color(255, 204, 204));
+        jButton3.setBackground(new java.awt.Color(209, 59, 83));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("FINALIZAR");
@@ -234,26 +234,11 @@ public class listaDeVenta extends javax.swing.JFrame {
         });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, 160, 40));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
-        jLabel12.setText("LISTA DE VENTA");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
+        lbl_lista.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        lbl_lista.setText("LISTA DE VENTA");
+        jPanel1.add(lbl_lista, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
 
-        jPanel4.setBackground(new java.awt.Color(204, 255, 0));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 100, 50));
-
-        jButton4.setBackground(new java.awt.Color(204, 204, 255));
+        jButton4.setBackground(new java.awt.Color(209, 59, 83));
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("PAGAR - EFECTIVO");
@@ -263,6 +248,9 @@ public class listaDeVenta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, 160, 40));
+
+        jLabel4.setText("logo");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 70, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -343,9 +331,9 @@ public class listaDeVenta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -353,9 +341,9 @@ public class listaDeVenta extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lbl_lista;
     // End of variables declaration//GEN-END:variables
 }

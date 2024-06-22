@@ -5,6 +5,8 @@
 package VISTAS;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 /**
  *
  * @author diego
@@ -33,6 +35,15 @@ public class puntoDeVenta extends javax.swing.JFrame {
         this.setLocation(x, y);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
+        Funciones.CargarLogo(lbl_logo);
+      
+        Funciones.CargarNombre(lbl_LibroNetStore);
+   
+
+         
+        
+        
+       
     }
 
     /**
@@ -45,22 +56,20 @@ public class puntoDeVenta extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
         jButtonListaDeVenta = new javax.swing.JButton();
         jButtonBuscador = new javax.swing.JButton();
         jButtonInventario = new javax.swing.JButton();
-        jButtonSalir = new javax.swing.JButton();
+        lbl_logo = new javax.swing.JLabel();
+        lbl_LibroNetStore = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        btn_salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
-        jLabel12.setText("NOMBRE DE LA LIBRERIA");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
-
-        jButtonListaDeVenta.setBackground(new java.awt.Color(204, 204, 255));
+        jButtonListaDeVenta.setBackground(new java.awt.Color(209, 59, 83));
         jButtonListaDeVenta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButtonListaDeVenta.setForeground(new java.awt.Color(255, 255, 255));
         jButtonListaDeVenta.setText("LISTA DE VENTA");
@@ -69,9 +78,9 @@ public class puntoDeVenta extends javax.swing.JFrame {
                 jButtonListaDeVentaActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonListaDeVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 200, 40));
+        jPanel1.add(jButtonListaDeVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 200, 40));
 
-        jButtonBuscador.setBackground(new java.awt.Color(204, 204, 255));
+        jButtonBuscador.setBackground(new java.awt.Color(209, 59, 83));
         jButtonBuscador.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButtonBuscador.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBuscador.setText("BUSCADOR");
@@ -80,9 +89,9 @@ public class puntoDeVenta extends javax.swing.JFrame {
                 jButtonBuscadorActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 200, 40));
+        jPanel1.add(jButtonBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 200, 40));
 
-        jButtonInventario.setBackground(new java.awt.Color(204, 204, 255));
+        jButtonInventario.setBackground(new java.awt.Color(209, 59, 83));
         jButtonInventario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButtonInventario.setForeground(new java.awt.Color(255, 255, 255));
         jButtonInventario.setText("INVENTARIO");
@@ -91,26 +100,39 @@ public class puntoDeVenta extends javax.swing.JFrame {
                 jButtonInventarioActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 200, 40));
+        jPanel1.add(jButtonInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 200, 40));
 
-        jButtonSalir.setBackground(new java.awt.Color(153, 153, 153));
-        jButtonSalir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButtonSalir.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonSalir.setText("SALIR");
-        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+        lbl_logo.setText("logo");
+        lbl_logo.setToolTipText("");
+        jPanel1.add(lbl_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 80, 70));
+
+        lbl_LibroNetStore.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
+        lbl_LibroNetStore.setText("Nombre");
+        jPanel1.add(lbl_LibroNetStore, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
+
+        jLabel1.setText("Vendedor");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
+
+        btn_salir.setBackground(new java.awt.Color(209, 59, 83));
+        btn_salir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_salir.setForeground(new java.awt.Color(255, 255, 255));
+        btn_salir.setText("X");
+        btn_salir.setMargin(new java.awt.Insets(2, 2, 3, 2));
+        btn_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSalirActionPerformed(evt);
+                btn_salirActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 120, 40));
+        jPanel1.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 30, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,10 +157,10 @@ public class puntoDeVenta extends javax.swing.JFrame {
         new Inventario().setVisible(true);
     }//GEN-LAST:event_jButtonInventarioActionPerformed
 
-    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
-        this.dispose();  // Cerrar el formulario actual
-        System.exit(0);  // Finalizar la aplicación
-    }//GEN-LAST:event_jButtonSalirActionPerformed
+    private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
+        System.exit(0);
+
+    }//GEN-LAST:event_btn_salirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,11 +198,13 @@ public class puntoDeVenta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btn_salir;
     private javax.swing.JButton jButtonBuscador;
     private javax.swing.JButton jButtonInventario;
     private javax.swing.JButton jButtonListaDeVenta;
-    private javax.swing.JButton jButtonSalir;
-    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbl_LibroNetStore;
+    private javax.swing.JLabel lbl_logo;
     // End of variables declaration//GEN-END:variables
 }

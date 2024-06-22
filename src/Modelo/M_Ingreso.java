@@ -5,7 +5,7 @@
 package Modelo;
 
 
-import VISTAS.buscador;
+import VISTAS.puntoDeVenta;
 import VISTAS.Ingreso;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -48,9 +48,9 @@ public class M_Ingreso extends conexion {
             if (!rs.next()) {
                 JOptionPane.showMessageDialog(null,"invalid username or password");
           }else{
-                JOptionPane.showMessageDialog(null,"login sucesful");
                 
-                new buscador().show();
+                
+                new puntoDeVenta().show();
             }
             
         }catch(Exception e){

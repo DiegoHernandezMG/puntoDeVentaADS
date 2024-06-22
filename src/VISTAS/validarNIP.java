@@ -73,13 +73,13 @@ public class validarNIP extends javax.swing.JFrame {
                 jButtonValidarNIPActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonValidarNIP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 160, 40));
+        jPanel1.add(jButtonValidarNIP, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 160, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -5,6 +5,8 @@
 package VISTAS;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 /**
  *
  * @author diego
@@ -33,6 +35,21 @@ public class Ingreso extends javax.swing.JFrame {
         this.setLocation(x, y);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
+                try {
+            Font OpenSauceOneBold = Font.createFont(Font.TRUETYPE_FONT, new File("src/fonts/OpenSauceOne-Bold.ttf")).deriveFont(30f);
+            lbl_inciosesion.setFont(OpenSauceOneBold);
+            Font OpenSauceOne = Font.createFont(Font.TRUETYPE_FONT, new File("src/fonts/OpenSauceOne-Regular.ttf")).deriveFont(18f);
+            lbl_usuario.setFont(OpenSauceOne);lbl_contraseña.setFont(OpenSauceOne);
+            } catch (FontFormatException | IOException e) {
+             System.err.println("Error: " + e.getMessage());
+             e.printStackTrace();
+             }
+                
+                
+        Funciones.CargarLogo(lbl_logo);
+        
+      
+        
     }
 
     /**
@@ -44,58 +61,66 @@ public class Ingreso extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        Panel = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lbl_usuario = new javax.swing.JLabel();
+        lbl_contraseña = new javax.swing.JLabel();
         txt_usuario = new javax.swing.JTextField();
-        jButtonSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btn_iniciarsesion = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
+        btn_salir = new javax.swing.JButton();
         txt_contraseña = new javax.swing.JPasswordField();
-        jButtonIngresoAdmin = new javax.swing.JButton();
+        lbl_inciosesion = new javax.swing.JLabel();
+        lbl_logo = new javax.swing.JLabel();
+        btn_iniciarsesion = new javax.swing.JButton();
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.jpeg"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
-        jLabel12.setText("INICIO DE SESION");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        Panel.setBackground(new java.awt.Color(255, 255, 255));
+        Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
-        jLabel13.setText("VENDEDOR");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+        Panel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setText("Nombre de usuario:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+        lbl_usuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_usuario.setText("Nombre de usuario:");
+        Panel.add(lbl_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setText("Contraseña:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
-        jPanel1.add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 190, 30));
-
-        jButtonSalir.setBackground(new java.awt.Color(153, 153, 153));
-        jButtonSalir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButtonSalir.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonSalir.setText("SALIR");
-        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSalirActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, -1, 40));
+        lbl_contraseña.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_contraseña.setText("Contraseña:");
+        Panel.add(lbl_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
+        Panel.add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 190, 30));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 153, 255));
         jLabel1.setText("¿Olvidaste tu contraseña?");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 220, 170, -1));
+        Panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 170, -1));
 
-        btn_iniciarsesion.setBackground(new java.awt.Color(204, 204, 255));
+        btn_salir.setBackground(new java.awt.Color(209, 59, 83));
+        btn_salir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_salir.setForeground(new java.awt.Color(255, 255, 255));
+        btn_salir.setText("X");
+        btn_salir.setMargin(new java.awt.Insets(2, 2, 3, 2));
+        btn_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_salirActionPerformed(evt);
+            }
+        });
+        Panel.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 30, 30));
+        Panel.add(txt_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 190, 30));
+
+        lbl_inciosesion.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
+        lbl_inciosesion.setText("INICIO DE SESION");
+        Panel.add(lbl_inciosesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, -1));
+
+        lbl_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.jpeg"))); // NOI18N
+        lbl_logo.setToolTipText("");
+        Panel.add(lbl_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 100, 80));
+
+        btn_iniciarsesion.setBackground(new java.awt.Color(209, 59, 83));
         btn_iniciarsesion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btn_iniciarsesion.setForeground(new java.awt.Color(255, 255, 255));
         btn_iniciarsesion.setText("INICIAR SESIÓN");
@@ -104,67 +129,35 @@ public class Ingreso extends javax.swing.JFrame {
                 btn_iniciarsesionActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_iniciarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 200, 40));
-
-        jPanel4.setBackground(new java.awt.Color(204, 255, 0));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 100, 70));
-        jPanel1.add(txt_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 190, 30));
-
-        jButtonIngresoAdmin.setBackground(new java.awt.Color(255, 204, 204));
-        jButtonIngresoAdmin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButtonIngresoAdmin.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonIngresoAdmin.setText("Ingresar como administrador");
-        jButtonIngresoAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonIngresoAdminActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButtonIngresoAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 230, 40));
+        Panel.add(btn_iniciarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 200, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
-        this.dispose();  // Cerrar el formulario actual
-        System.exit(0);  // Finalizar la aplicación
-    }//GEN-LAST:event_jButtonSalirActionPerformed
+    private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
+   System.exit(0);
+   
+   
+    }//GEN-LAST:event_btn_salirActionPerformed
 
     private void btn_iniciarsesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciarsesionActionPerformed
-        this.setVisible(false);
-        new puntoDeVenta().setVisible(true);
+        // TODO add your handling code here:
     }//GEN-LAST:event_btn_iniciarsesionActionPerformed
-
-    private void jButtonIngresoAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngresoAdminActionPerformed
-        this.setVisible(false);
-        new ingresoAdmin().setVisible(true);
-    }//GEN-LAST:event_jButtonIngresoAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,16 +198,16 @@ public class Ingreso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Panel;
     public javax.swing.JButton btn_iniciarsesion;
-    private javax.swing.JButton jButtonIngresoAdmin;
-    private javax.swing.JButton jButtonSalir;
+    public javax.swing.JButton btn_salir;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lbl_contraseña;
+    private javax.swing.JLabel lbl_inciosesion;
+    private javax.swing.JLabel lbl_logo;
+    private javax.swing.JLabel lbl_usuario;
     public javax.swing.JPasswordField txt_contraseña;
     public javax.swing.JTextField txt_usuario;
     // End of variables declaration//GEN-END:variables
