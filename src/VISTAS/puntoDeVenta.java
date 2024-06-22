@@ -35,15 +35,9 @@ public class puntoDeVenta extends javax.swing.JFrame {
         this.setLocation(x, y);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
+        
         Funciones.CargarLogo(lbl_logo);
-      
         Funciones.CargarNombre(lbl_LibroNetStore);
-   
-
-         
-        
-        
-       
     }
 
     /**
@@ -70,9 +64,9 @@ public class puntoDeVenta extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonListaDeVenta.setBackground(new java.awt.Color(209, 59, 83));
-        jButtonListaDeVenta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonListaDeVenta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButtonListaDeVenta.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonListaDeVenta.setText("LISTA DE VENTA");
+        jButtonListaDeVenta.setText("Lista de venta");
         jButtonListaDeVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonListaDeVentaActionPerformed(evt);
@@ -81,9 +75,9 @@ public class puntoDeVenta extends javax.swing.JFrame {
         jPanel1.add(jButtonListaDeVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 200, 40));
 
         jButtonBuscador.setBackground(new java.awt.Color(209, 59, 83));
-        jButtonBuscador.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonBuscador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButtonBuscador.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonBuscador.setText("BUSCADOR");
+        jButtonBuscador.setText("Buscador");
         jButtonBuscador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBuscadorActionPerformed(evt);
@@ -92,9 +86,9 @@ public class puntoDeVenta extends javax.swing.JFrame {
         jPanel1.add(jButtonBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 200, 40));
 
         jButtonInventario.setBackground(new java.awt.Color(209, 59, 83));
-        jButtonInventario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonInventario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButtonInventario.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonInventario.setText("INVENTARIO");
+        jButtonInventario.setText("Inventario");
         jButtonInventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInventarioActionPerformed(evt);

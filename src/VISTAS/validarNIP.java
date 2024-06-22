@@ -56,30 +56,32 @@ public class validarNIP extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
-        jLabel12.setText("PAGO CON TARJETA");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+        jLabel12.setText("NIP");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Ingresa NIP:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 240, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 120, -1));
+
+        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 120, 30));
 
-        jButtonValidarNIP.setBackground(new java.awt.Color(204, 204, 255));
-        jButtonValidarNIP.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonValidarNIP.setBackground(new java.awt.Color(255, 136, 130));
+        jButtonValidarNIP.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButtonValidarNIP.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonValidarNIP.setText("VALIDAR");
+        jButtonValidarNIP.setText("Validar");
         jButtonValidarNIP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonValidarNIPActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonValidarNIP, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 160, 40));
+        jPanel1.add(jButtonValidarNIP, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 120, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

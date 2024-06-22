@@ -109,7 +109,7 @@ public class Ingreso extends javax.swing.JFrame {
                 btn_salirActionPerformed(evt);
             }
         });
-        Panel.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 30, 30));
+        Panel.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, 40, 30));
         Panel.add(txt_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 190, 30));
 
         lbl_inciosesion.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
@@ -121,7 +121,7 @@ public class Ingreso extends javax.swing.JFrame {
         Panel.add(lbl_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 100, 80));
 
         btn_iniciarsesion.setBackground(new java.awt.Color(209, 59, 83));
-        btn_iniciarsesion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn_iniciarsesion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn_iniciarsesion.setForeground(new java.awt.Color(255, 255, 255));
         btn_iniciarsesion.setText("INICIAR SESIÓN");
         btn_iniciarsesion.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +129,7 @@ public class Ingreso extends javax.swing.JFrame {
                 btn_iniciarsesionActionPerformed(evt);
             }
         });
-        Panel.add(btn_iniciarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 200, 40));
+        Panel.add(btn_iniciarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 200, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

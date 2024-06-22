@@ -33,6 +33,8 @@ public class pagoTarjeta extends javax.swing.JFrame {
         this.setLocation(x, y);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
+        
+        Funciones.CargarLogo(lbl_logo);
     }
 
     /**
@@ -50,6 +52,10 @@ public class pagoTarjeta extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jButtonValidar = new javax.swing.JButton();
         jButtonRegresar = new javax.swing.JButton();
+        lbl_logo = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,45 +63,57 @@ public class pagoTarjeta extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
-        jLabel12.setText("PAGO CON TARJETA");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        jLabel12.setText("PAGO CON");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Ingresa número de tarjeta:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 240, -1));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 330, 30));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 240, -1));
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 360, 30));
 
-        jButtonValidar.setBackground(new java.awt.Color(204, 204, 255));
-        jButtonValidar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonValidar.setBackground(new java.awt.Color(255, 136, 130));
+        jButtonValidar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButtonValidar.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonValidar.setText("VALIDAR");
+        jButtonValidar.setText("Validar");
         jButtonValidar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonValidarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonValidar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 160, 40));
+        jPanel1.add(jButtonValidar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 160, 40));
 
-        jButtonRegresar.setBackground(new java.awt.Color(153, 153, 153));
-        jButtonRegresar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonRegresar.setBackground(new java.awt.Color(209, 59, 83));
+        jButtonRegresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButtonRegresar.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonRegresar.setText("REGRESAR");
+        jButtonRegresar.setText("Regresar");
         jButtonRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRegresarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 160, 40));
+        jPanel1.add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 160, 40));
+
+        lbl_logo.setText("logo");
+        jPanel1.add(lbl_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, 50));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
+        jLabel13.setText("TARJETA");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel6.setText("Ingresa tu NIP:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 240, -1));
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 360, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
         );
 
         pack();
@@ -103,7 +121,6 @@ public class pagoTarjeta extends javax.swing.JFrame {
 
     private void jButtonValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValidarActionPerformed
         //this.setVisible(false);
-        new validarNIP().setVisible(true);
     }//GEN-LAST:event_jButtonValidarActionPerformed
 
     private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
@@ -150,8 +167,12 @@ public class pagoTarjeta extends javax.swing.JFrame {
     private javax.swing.JButton jButtonRegresar;
     private javax.swing.JButton jButtonValidar;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel lbl_logo;
     // End of variables declaration//GEN-END:variables
 }

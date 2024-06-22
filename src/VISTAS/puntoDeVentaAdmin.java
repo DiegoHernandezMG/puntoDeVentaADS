@@ -67,9 +67,9 @@ public class puntoDeVentaAdmin extends javax.swing.JFrame {
         jPanel1.add(lbl_LibroNetStore, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
 
         jButtonListaDeVenta.setBackground(new java.awt.Color(209, 59, 83));
-        jButtonListaDeVenta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonListaDeVenta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButtonListaDeVenta.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonListaDeVenta.setText("LISTA DE VENTA");
+        jButtonListaDeVenta.setText("Lista de venta");
         jButtonListaDeVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonListaDeVentaActionPerformed(evt);
@@ -78,9 +78,9 @@ public class puntoDeVentaAdmin extends javax.swing.JFrame {
         jPanel1.add(jButtonListaDeVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 220, 40));
 
         jButtonBuscador.setBackground(new java.awt.Color(209, 59, 83));
-        jButtonBuscador.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonBuscador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButtonBuscador.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonBuscador.setText("BUSCADOR");
+        jButtonBuscador.setText("Buscador");
         jButtonBuscador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBuscadorActionPerformed(evt);
@@ -89,9 +89,9 @@ public class puntoDeVentaAdmin extends javax.swing.JFrame {
         jPanel1.add(jButtonBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 220, 40));
 
         jButtonInventario.setBackground(new java.awt.Color(209, 59, 83));
-        jButtonInventario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonInventario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButtonInventario.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonInventario.setText("INVENTARIO");
+        jButtonInventario.setText("Inventario");
         jButtonInventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInventarioActionPerformed(evt);
@@ -100,9 +100,9 @@ public class puntoDeVentaAdmin extends javax.swing.JFrame {
         jPanel1.add(jButtonInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 220, 40));
 
         jButtonAgregarEmpleado.setBackground(new java.awt.Color(209, 59, 83));
-        jButtonAgregarEmpleado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonAgregarEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButtonAgregarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonAgregarEmpleado.setText("AGREGAR EMPLEADO");
+        jButtonAgregarEmpleado.setText("Agregar empleado");
         jButtonAgregarEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAgregarEmpleadoActionPerformed(evt);
