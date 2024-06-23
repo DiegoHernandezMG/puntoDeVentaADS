@@ -7,15 +7,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+
+import clases.Login;
 /**
  *
  * @author diego
  */
 public class Ingreso extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ingresoVendedor
-     */
+    Login login;
+    Boolean ingreso;
+    
     public Ingreso() {
         initComponents();
         
@@ -35,21 +37,18 @@ public class Ingreso extends javax.swing.JFrame {
         this.setLocation(x, y);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
-                try {
+        
+        try {
             Font OpenSauceOneBold = Font.createFont(Font.TRUETYPE_FONT, new File("src/fonts/OpenSauceOne-Bold.ttf")).deriveFont(30f);
             lbl_inciosesion.setFont(OpenSauceOneBold);
             Font OpenSauceOne = Font.createFont(Font.TRUETYPE_FONT, new File("src/fonts/OpenSauceOne-Regular.ttf")).deriveFont(18f);
             lbl_usuario.setFont(OpenSauceOne);lbl_contraseña.setFont(OpenSauceOne);
-            } catch (FontFormatException | IOException e) {
-             System.err.println("Error: " + e.getMessage());
-             e.printStackTrace();
-             }
-                
+        }catch (FontFormatException | IOException e) {
+            System.err.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
                 
         Funciones.CargarLogo(lbl_logo);
-        
-      
-        
     }
 
     /**
@@ -66,10 +65,10 @@ public class Ingreso extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         lbl_usuario = new javax.swing.JLabel();
         lbl_contraseña = new javax.swing.JLabel();
-        txt_usuario = new javax.swing.JTextField();
+        nombreUsuario = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btn_salir = new javax.swing.JButton();
-        txt_contraseña = new javax.swing.JPasswordField();
+        contrasenia = new javax.swing.JPasswordField();
         lbl_inciosesion = new javax.swing.JLabel();
         lbl_logo = new javax.swing.JLabel();
         btn_iniciarsesion = new javax.swing.JButton();
@@ -92,7 +91,13 @@ public class Ingreso extends javax.swing.JFrame {
         lbl_contraseña.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbl_contraseña.setText("Contraseña:");
         Panel.add(lbl_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
-        Panel.add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 190, 30));
+
+        nombreUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreUsuarioActionPerformed(evt);
+            }
+        });
+        Panel.add(nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 190, 30));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 153, 255));
@@ -110,7 +115,13 @@ public class Ingreso extends javax.swing.JFrame {
             }
         });
         Panel.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, 40, 30));
-        Panel.add(txt_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 190, 30));
+
+        contrasenia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contraseniaActionPerformed(evt);
+            }
+        });
+        Panel.add(contrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 190, 30));
 
         lbl_inciosesion.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
         lbl_inciosesion.setText("INICIO DE SESION");
@@ -156,8 +167,24 @@ public class Ingreso extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_salirActionPerformed
 
     private void btn_iniciarsesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciarsesionActionPerformed
-        // TODO add your handling code here:
+        String nombreUsuario1 = nombreUsuario.getText();
+        String contrasenia1 = contrasenia.getText();
+        
+        this.login = new Login(nombreUsuario1, contrasenia1);
+        
+        if(this.login.iniciarSesion()){
+            this.setVisible(false);
+            new puntoDeVentaAdmin().setVisible(true);
+        }
     }//GEN-LAST:event_btn_iniciarsesionActionPerformed
+
+    private void nombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreUsuarioActionPerformed
+
+    private void contraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseniaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contraseniaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,6 +228,7 @@ public class Ingreso extends javax.swing.JFrame {
     private javax.swing.JPanel Panel;
     public javax.swing.JButton btn_iniciarsesion;
     public javax.swing.JButton btn_salir;
+    public javax.swing.JPasswordField contrasenia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
@@ -208,7 +236,6 @@ public class Ingreso extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_inciosesion;
     private javax.swing.JLabel lbl_logo;
     private javax.swing.JLabel lbl_usuario;
-    public javax.swing.JPasswordField txt_contraseña;
-    public javax.swing.JTextField txt_usuario;
+    public javax.swing.JTextField nombreUsuario;
     // End of variables declaration//GEN-END:variables
 }

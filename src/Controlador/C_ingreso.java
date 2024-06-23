@@ -24,8 +24,8 @@ public class C_ingreso implements ActionListener {
          }
      
      public void actionPerformed(ActionEvent e){
-         modelo.setUsuario(vista.txt_usuario.getText());
-         modelo.setContraseña(vista.txt_contraseña.getText());
+         modelo.setUsuario(vista.nombreUsuario.getText());
+         modelo.setContraseña(vista.contrasenia.getText());
          modelo.IniciarSesion();
          
      }

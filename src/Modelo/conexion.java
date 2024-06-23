@@ -19,7 +19,7 @@ public class conexion {
          Connection conn=null;
          try{
             Class.forName("org.postgresql.Driver");
-             conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/PuntoDeVenta","lucas","lucas");
+             conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/libStoreDB","lucas","lucas");
        
          }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);

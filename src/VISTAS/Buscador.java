@@ -3,17 +3,31 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package VISTAS;
+import clases.Conexion;
 import javax.swing.*;
 import java.awt.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author diego
  */
 public class buscador extends javax.swing.JFrame {
 
-    /**
-     * Creates new form buscador
-     */
+    Conexion conexion;
+    Connection conn = null;
+    
+    String tituloLibro;
+    String isbnLibro;
+    String resumenLibro;
+    String precioLibro;
+    String stockLibro;
+    String editorial_id;
+    String categoria_id;
+    DefaultTableModel dtm = new DefaultTableModel();
+    
     public buscador() {
         initComponents();
         
@@ -35,6 +49,14 @@ public class buscador extends javax.swing.JFrame {
         this.setVisible(true);
         
         Funciones.CargarLogo(lbl_logo);
+        
+        ISBNRadio.setSelected(false);
+        autorRadio.setSelected(false);
+        tituloRadio.setSelected(true);
+        
+        String[] titulos = new String[]{"Titulo", "ISBN", "Resumen", "Precio", "Stock", "Editorial", "Categoria"};
+        dtm.setColumnIdentifiers(titulos);
+        tablaBusqueda.setModel(dtm);
     }
 
     /**
@@ -48,16 +70,16 @@ public class buscador extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        tituloRadio = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        ISBNRadio = new javax.swing.JRadioButton();
+        autorRadio = new javax.swing.JRadioButton();
         jButtonRegresar = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        inputSearch = new javax.swing.JTextField();
+        buscarButton = new javax.swing.JButton();
         lbl_logo = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaBusqueda = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,44 +88,38 @@ public class buscador extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
         jLabel12.setText("BUSCADOR");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, -1, -1));
 
-        jRadioButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jRadioButton1.setText("Título");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        tituloRadio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tituloRadio.setText("Título");
+        tituloRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                tituloRadioActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, -1, -1));
+        jPanel1.add(tituloRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Buscar por:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
-        jRadioButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jRadioButton2.setText("ISBN");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        ISBNRadio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        ISBNRadio.setText("ISBN");
+        ISBNRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                ISBNRadioActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
+        jPanel1.add(ISBNRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, -1, -1));
 
-        jRadioButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jRadioButton3.setText("Autor");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        autorRadio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        autorRadio.setText("Autor");
+        autorRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                autorRadioActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, -1, -1));
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 320, 140));
+        jPanel1.add(autorRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, -1, -1));
 
         jButtonRegresar.setBackground(new java.awt.Color(209, 59, 83));
         jButtonRegresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -114,29 +130,58 @@ public class buscador extends javax.swing.JFrame {
                 jButtonRegresarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 360, 150, 40));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 320, 30));
+        jPanel1.add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 150, 40));
+        jPanel1.add(inputSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 490, 30));
 
-        jButton4.setBackground(new java.awt.Color(209, 59, 83));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Buscar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        buscarButton.setBackground(new java.awt.Color(209, 59, 83));
+        buscarButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        buscarButton.setForeground(new java.awt.Color(255, 255, 255));
+        buscarButton.setText("Buscar");
+        buscarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                buscarButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 160, 40));
+        jPanel1.add(buscarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 160, 40));
 
         lbl_logo.setText("logo");
         lbl_logo.setToolTipText("");
         jPanel1.add(lbl_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 80, 70));
 
+        tablaBusqueda.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Título", "ISBN", "Resumen", "Precio", "Stock"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tablaBusqueda);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 490, 80));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,26 +191,86 @@ public class buscador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    private void tituloRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tituloRadioActionPerformed
+        if(tituloRadio.isEnabled()){
+            ISBNRadio.setSelected(false);
+            autorRadio.setSelected(false);
+        }
+        System.out.println("Esta activado titulo");
+    }//GEN-LAST:event_tituloRadioActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    private void ISBNRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ISBNRadioActionPerformed
+        if(ISBNRadio.isEnabled()){
+            autorRadio.setSelected(false);
+            tituloRadio.setSelected(false);
+        }
+        System.out.println("Esta activado ISBN");
+    }//GEN-LAST:event_ISBNRadioActionPerformed
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
+    private void autorRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autorRadioActionPerformed
+        if(autorRadio.isEnabled()){
+            ISBNRadio.setSelected(false);
+            tituloRadio.setSelected(false);
+        }
+        System.out.println("Esta activado autor");
+    }//GEN-LAST:event_autorRadioActionPerformed
 
     private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
         this.setVisible(false);
         new puntoDeVenta().setVisible(true);
     }//GEN-LAST:event_jButtonRegresarActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
+        String input = inputSearch.getText();
+        System.out.println(input);
+        
+        dtm.setRowCount(0);
+        
+        this.conexion = new Conexion();
+        conn = this.conexion.establecerConexion();
+        
+        if(tituloRadio.isSelected()){
+            if(conn!=null){
+                try {
+                    //String query = "SELECT \"estatusEmpleado\" FROM \"public\".empleado WHERE \"usuarioEmpleado\" = '" + usuario "';
+                    String query = "SELECT \"tituloLibro\", \"isbnLibro\", \"resumenLibro\", \"precioLibro\", \"stockLibro\", \"editorial_id\", \"categoria_id\" FROM \"public\".\"libro\" WHERE \"tituloLibro\" = '" + input + "'";
+                    Statement stmt = conn.createStatement();
+                    ResultSet rs = stmt.executeQuery(query);
+
+                    while (rs.next()) {
+                        this.tituloLibro = rs.getString("tituloLibro");
+                        this.isbnLibro = rs.getString("isbnLibro");
+                        this.resumenLibro = rs.getString("resumenLibro");
+                        this.precioLibro = rs.getString("precioLibro");
+                        this.stockLibro = rs.getString("stockLibro");
+                        this.editorial_id = rs.getString("editorial_id");
+                        this.categoria_id = rs.getString("categoria_id");
+                    }
+                    
+                    rs.close();
+                    stmt.close();
+                    conn.close();
+                    
+                    if(tituloLibro.isEmpty()==false){
+                        System.out.println("El campo titulo libro no esta vacio");
+                        dtm.addRow(new Object[]{tituloLibro, isbnLibro, resumenLibro, precioLibro, stockLibro, editorial_id, categoria_id});
+                    }else{
+                        System.out.println("El campo titulo libro ESTA VACIO");
+                        dtm.setRowCount(0);
+                    }             
+                } catch (Exception e) {
+                    //System.out.println("Datos incorrectos o usuario inexistente.");
+                    JOptionPane.showMessageDialog(null, "Libro no encontrado.");
+                }
+            }
+        }
+        if(ISBNRadio.isSelected()){
+            System.out.println("Esta activado isbn y estoy buscando.");
+        }
+        if(autorRadio.isSelected()){
+            System.out.println("Esta activado autor y estoy buscando.");
+        }
+    }//GEN-LAST:event_buscarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,17 +308,17 @@ public class buscador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton4;
+    private javax.swing.JRadioButton ISBNRadio;
+    private javax.swing.JRadioButton autorRadio;
+    private javax.swing.JButton buscarButton;
+    private javax.swing.JTextField inputSearch;
     private javax.swing.JButton jButtonRegresar;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_logo;
+    private javax.swing.JTable tablaBusqueda;
+    private javax.swing.JRadioButton tituloRadio;
     // End of variables declaration//GEN-END:variables
 }
