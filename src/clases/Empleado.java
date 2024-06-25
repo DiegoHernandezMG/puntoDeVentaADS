@@ -13,6 +13,7 @@ import java.sql.Statement;
  * @author diego
  */
 public class Empleado {
+    int id;
     String usuario;
     String password;
     Boolean turno;
@@ -20,21 +21,21 @@ public class Empleado {
     String apePaterno;
     String apeMaterno;
     Boolean estatusEmpleado;
-    
-    Conexion conexion;
-    Connection conn = null;
+ 
 
-    public Empleado(String usuario, String password) {
+ public Empleado(int id, String usuario, String password, Boolean turno, String nombre, String apePaterno, String apeMaterno, Boolean estatusEmpleado) {
+        this.id = id;
         this.usuario = usuario;
         this.password = password;
+        this.turno = turno;
+        this.nombre = nombre;
+        this.apePaterno = apePaterno;
+        this.apeMaterno = apeMaterno;
+        this.estatusEmpleado = estatusEmpleado;
+        
     }
     
-    public Connection establecerConexion(){
-        this.conexion = new Conexion();
-        conn = this.conexion.establecerConexion();
-        
-        return conn;
-    }
+
     
     
     

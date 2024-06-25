@@ -11,12 +11,12 @@ import java.io.IOException;
  *
  * @author diego
  */
-public class puntoDeVenta extends javax.swing.JFrame {
+public class PuntoDeVenta extends javax.swing.JFrame {
 
     /**
      * Creates new form puntoDeVenta
      */
-    public puntoDeVenta() {
+    public PuntoDeVenta() {
         initComponents();
         
         PointerInfo pointerInfo = MouseInfo.getPointerInfo();
@@ -102,7 +102,7 @@ public class puntoDeVenta extends javax.swing.JFrame {
 
         lbl_LibroNetStore.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
         lbl_LibroNetStore.setText("Nombre");
-        jPanel1.add(lbl_LibroNetStore, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
+        jPanel1.add(lbl_LibroNetStore, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
 
         jLabel1.setText("Vendedor");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
@@ -138,12 +138,12 @@ public class puntoDeVenta extends javax.swing.JFrame {
 
     private void jButtonListaDeVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaDeVentaActionPerformed
         this.setVisible(false);
-        new listaDeVenta().setVisible(true);
+        new ListaDeVenta().setVisible(true);
     }//GEN-LAST:event_jButtonListaDeVentaActionPerformed
 
     private void jButtonBuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscadorActionPerformed
         this.setVisible(false);
-        new buscador().setVisible(true);
+        new Buscador().setVisible(true);
     }//GEN-LAST:event_jButtonBuscadorActionPerformed
 
     private void jButtonInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInventarioActionPerformed
@@ -173,20 +173,20 @@ public class puntoDeVenta extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(puntoDeVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PuntoDeVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(puntoDeVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PuntoDeVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(puntoDeVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PuntoDeVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(puntoDeVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PuntoDeVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new puntoDeVenta().setVisible(true);
+                new PuntoDeVenta().setVisible(true);
             }
         });
     }

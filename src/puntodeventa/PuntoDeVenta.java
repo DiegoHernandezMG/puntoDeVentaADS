@@ -21,9 +21,9 @@ public class PuntoDeVenta {
         
         
          Ingreso ingreso= new Ingreso();
-        M_Ingreso m_ingreso=new M_Ingreso();
-        C_ingreso c_ingreso = new C_ingreso(ingreso, m_ingreso);
-        c_ingreso.Iniciar();
+        //M_Ingreso m_ingreso=new M_Ingreso();
+       // C_ingreso c_ingreso = new C_ingreso(ingreso, m_ingreso);
+        //c_ingreso.Iniciar();
         ingreso.setVisible(true);
         
         // TODO code application logic here

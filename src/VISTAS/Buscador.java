@@ -4,31 +4,29 @@
  */
 package VISTAS;
 import clases.Conexion;
+import clases.Libro;
+import clases.Inventario;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import java.util.List;
 /**
  *
  * @author diego
  */
-public class buscador extends javax.swing.JFrame {
+public class Buscador extends javax.swing.JFrame {
 
     Conexion conexion;
     Connection conn = null;
     
-    String tituloLibro;
-    String isbnLibro;
-    String resumenLibro;
-    String precioLibro;
-    String stockLibro;
-    String editorial_id;
-    String categoria_id;
+
     DefaultTableModel dtm = new DefaultTableModel();
     
-    public buscador() {
+    public Buscador() {
         initComponents();
         
         PointerInfo pointerInfo = MouseInfo.getPointerInfo();
@@ -54,7 +52,7 @@ public class buscador extends javax.swing.JFrame {
         autorRadio.setSelected(false);
         tituloRadio.setSelected(true);
         
-        String[] titulos = new String[]{"Titulo", "ISBN", "Resumen", "Precio", "Stock", "Editorial", "Categoria"};
+        String[] titulos = new String[]{"Titulo", "ISBN", "Resumen", "Precio", "Stock", "Editorial", "Categoria","Descuento"};
         dtm.setColumnIdentifiers(titulos);
         tablaBusqueda.setModel(dtm);
     }
@@ -217,7 +215,7 @@ public class buscador extends javax.swing.JFrame {
 
     private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
         this.setVisible(false);
-        new puntoDeVenta().setVisible(true);
+        new PuntoDeVenta().setVisible(true);
     }//GEN-LAST:event_jButtonRegresarActionPerformed
 
     private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
@@ -229,7 +227,50 @@ public class buscador extends javax.swing.JFrame {
         this.conexion = new Conexion();
         conn = this.conexion.establecerConexion();
         
+          Inventario inv = new Inventario();
+         List<Libro> listaLibros = inv.inventario();
+        List<Libro> resultados = new ArrayList<>();
+        
+        
+        
         if(tituloRadio.isSelected()){
+            for (Libro libro : listaLibros) {
+                if (libro.getTituloLibro().toLowerCase().contains(input.toLowerCase())) {
+                resultados.add(libro);
+                }
+            }
+        }   
+        else if(ISBNRadio.isSelected()){
+            for (Libro libro : listaLibros) {
+            if (libro.getIsbnLibro().toLowerCase().contains(input.toLowerCase())) {
+                resultados.add(libro);
+            }
+        }
+}
+         for (Libro libro : resultados) {
+        Object[] rowData = {
+            
+            libro.getTituloLibro(),
+           libro.getIsbnLibro(),
+            libro.getResumenLibro(),
+            libro.getPrecioLibro(),
+            libro.getStockLibro(),
+            libro.getEditorial(),
+            libro.getCategoria(),
+            libro.getDescuento()
+           
+            
+            
+        };
+        dtm.addRow(rowData);
+    }
+      
+       if (resultados.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "No se encontraron resultados.");
+        }
+        
+        
+            /*
             if(conn!=null){
                 try {
                     //String query = "SELECT \"estatusEmpleado\" FROM \"public\".empleado WHERE \"usuarioEmpleado\" = '" + usuario "';
@@ -264,12 +305,14 @@ public class buscador extends javax.swing.JFrame {
                 }
             }
         }
+            
         if(ISBNRadio.isSelected()){
             System.out.println("Esta activado isbn y estoy buscando.");
         }
         if(autorRadio.isSelected()){
             System.out.println("Esta activado autor y estoy buscando.");
         }
+            */
     }//GEN-LAST:event_buscarButtonActionPerformed
 
     /**
@@ -289,20 +332,20 @@ public class buscador extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(buscador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Buscador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(buscador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Buscador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(buscador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Buscador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(buscador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Buscador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new buscador().setVisible(true);
+                new Buscador().setVisible(true);
             }
         });
     }

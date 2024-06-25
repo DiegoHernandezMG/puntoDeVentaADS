@@ -126,7 +126,7 @@ public class Inventario extends javax.swing.JFrame {
 
     private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
         this.setVisible(false);
-        new puntoDeVenta().setVisible(true);
+        new PuntoDeVenta().setVisible(true);
     }//GEN-LAST:event_jButtonRegresarActionPerformed
 
     /**

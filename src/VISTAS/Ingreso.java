@@ -171,11 +171,8 @@ public class Ingreso extends javax.swing.JFrame {
         String contrasenia1 = contrasenia.getText();
         
         this.login = new Login(nombreUsuario1, contrasenia1);
-        
-        if(this.login.iniciarSesion()){
-            this.setVisible(false);
-            new puntoDeVentaAdmin().setVisible(true);
-        }
+        login.iniciarSesion();
+      
     }//GEN-LAST:event_btn_iniciarsesionActionPerformed
 
     private void nombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreUsuarioActionPerformed

@@ -149,7 +149,7 @@ public class ingresoAdmin extends javax.swing.JFrame {
 
     private void btn_iniciarsesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciarsesionActionPerformed
         this.setVisible(false);
-        new puntoDeVentaAdmin().setVisible(true);
+        new PuntoDeVentaAdmin().setVisible(true);
     }//GEN-LAST:event_btn_iniciarsesionActionPerformed
 
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed

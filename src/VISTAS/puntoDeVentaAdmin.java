@@ -9,12 +9,12 @@ import java.awt.*;
  *
  * @author diego
  */
-public class puntoDeVentaAdmin extends javax.swing.JFrame {
+public class PuntoDeVentaAdmin extends javax.swing.JFrame {
 
     /**
      * Creates new form puntoDeVentaAdmin
      */
-    public puntoDeVentaAdmin() {
+    public PuntoDeVentaAdmin() {
         initComponents();
         
         PointerInfo pointerInfo = MouseInfo.getPointerInfo();
@@ -145,12 +145,12 @@ public class puntoDeVentaAdmin extends javax.swing.JFrame {
 
     private void jButtonListaDeVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaDeVentaActionPerformed
         this.setVisible(false);
-        new listaDeVenta().setVisible(true);
+        new ListaDeVenta().setVisible(true);
     }//GEN-LAST:event_jButtonListaDeVentaActionPerformed
 
     private void jButtonBuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscadorActionPerformed
         this.setVisible(false);
-        new buscador().setVisible(true);
+        new Buscador().setVisible(true);
     }//GEN-LAST:event_jButtonBuscadorActionPerformed
 
     private void jButtonInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInventarioActionPerformed
@@ -184,20 +184,21 @@ public class puntoDeVentaAdmin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(puntoDeVentaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PuntoDeVentaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(puntoDeVentaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PuntoDeVentaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(puntoDeVentaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PuntoDeVentaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(puntoDeVentaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PuntoDeVentaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new puntoDeVentaAdmin().setVisible(true);
+                new PuntoDeVentaAdmin().setVisible(true);
             }
         });
     }

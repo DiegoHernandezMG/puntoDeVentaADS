@@ -211,7 +211,7 @@ public class AgregarNuevoEmpleado extends javax.swing.JFrame {
 
     private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
         this.setVisible(false);
-        new puntoDeVentaAdmin().setVisible(true);
+        new PuntoDeVentaAdmin().setVisible(true);
     }//GEN-LAST:event_jButtonRegresarActionPerformed
 
     /**

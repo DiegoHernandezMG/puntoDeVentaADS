@@ -6,17 +6,21 @@ package clases;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
+import VISTAS.Inventario;
+import VISTAS.PuntoDeVenta;
+import VISTAS.PuntoDeVentaAdmin;
 
 /**
  *
  * @author diego
  */
-public class Login {
+public class Login extends Conexion {
     String usuario;
     String contrasenia;
     
     String statusEmpleado;
-    Empleado empleadoActivo;
+    
     Connection conn = null;
 
     public Login(String usuario, String contrasenia) {
@@ -27,14 +31,14 @@ public class Login {
     public Login() {
     }
     
-    public Boolean iniciarSesion(){
+    public void iniciarSesion(){
         if(usuario.isEmpty() || contrasenia.isEmpty()){
             System.out.println("No hay datos completos.");
-            return false;
+            
             
         }else{
-            this.empleadoActivo = new Empleado(usuario, contrasenia);
-            conn = empleadoActivo.establecerConexion();
+         
+            conn = establecerConexion();
             
             if(conn!=null){
                 try {
@@ -49,21 +53,63 @@ public class Login {
                     
                     rs.close();
                     stmt.close();
-                    conn.close();
+                   
                     
                     if(statusEmpleado.equals("A")){
-                        System.out.println("Se inicio sesion correctamente.");
-                        return true;
+                        String query2 = "SELECT \"id\" FROM \"public\".\"empleado\" WHERE \"usuarioEmpleado\" = '" + usuario + "'";
+                        stmt = conn.createStatement();
+                        rs = stmt.executeQuery(query2);
+                        int id = -1;
+                        
+                        if (rs.next()) {
+                            id = rs.getInt("id");
+                        }
+                        
+                        rs.close();
+                        stmt.close();
+                        
+                        if (id != -1) {
+                            String query3 = "SELECT \"tipoempleado_id\" FROM \"public\".\"tipoEmpleado_empleados\" WHERE \"empleado_id\" = " + id;
+                            stmt = conn.createStatement();
+                            rs = stmt.executeQuery(query3);
+                            int tipoEmpleadoId=-1;
+                            if (rs.next()) {
+                                tipoEmpleadoId= rs.getInt("tipoempleado_id");
+                                // Puedes hacer algo con el tipoEmpleadoId si es necesario
+                                System.out.println("Tipo de Empleado ID: " + tipoEmpleadoId);
+                            }
+                            
+                            rs.close();
+                            stmt.close();
+                            if (tipoEmpleadoId==1) {
+                                new PuntoDeVentaAdmin().setVisible(true);
+                                }
+                            else if (tipoEmpleadoId==2) {
+                                 new PuntoDeVenta().setVisible(true);
+                                
+                            }
+                            else if (tipoEmpleadoId==3) {
+                                 new Inventario().setVisible(true);
+                                
+                            }
+                            
+                            System.out.println("Se inició sesión correctamente.");
+                            
+                        } else {
+                            System.out.println("No se encontró el ID del empleado.");
+                            
+                        }
                     }else{
                         System.out.println("El empleado esta inactivo.");
-                        return false;
+                        
                     }
                 } catch (Exception e) {
                     System.out.println("Datos incorrectos o usuario inexistente.");
-                    return false;
+                    JOptionPane.showMessageDialog(null, e);
+                    
                 }
             }
-            return false;
+            
         }
     }
 }

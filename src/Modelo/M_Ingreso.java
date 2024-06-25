@@ -5,7 +5,7 @@
 package Modelo;
 
 
-import VISTAS.puntoDeVenta;
+import VISTAS.PuntoDeVenta;
 import VISTAS.Ingreso;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -50,7 +50,7 @@ public class M_Ingreso extends conexion {
           }else{
                 
                 
-                new puntoDeVenta().show();
+                new PuntoDeVenta().show();
             }
             
         }catch(Exception e){
