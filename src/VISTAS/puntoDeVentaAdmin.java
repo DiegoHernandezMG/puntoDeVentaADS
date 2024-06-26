@@ -155,7 +155,7 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
 
     private void jButtonInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInventarioActionPerformed
         this.setVisible(false);
-        new Inventario().setVisible(true);
+        new VistaInventario().setVisible(true);
     }//GEN-LAST:event_jButtonInventarioActionPerformed
 
     private void jButtonAgregarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarEmpleadoActionPerformed

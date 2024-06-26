@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import VISTAS.Inventario;
+import VISTAS.VistaInventario;
 import VISTAS.PuntoDeVenta;
 import VISTAS.PuntoDeVentaAdmin;
 
@@ -84,6 +84,7 @@ public class Login extends Conexion {
                             rs.close();
                             stmt.close();
                             if (tipoEmpleadoId==1) {
+                                
                                 new PuntoDeVentaAdmin().setVisible(true);
                                 }
                             else if (tipoEmpleadoId==2) {
@@ -91,7 +92,7 @@ public class Login extends Conexion {
                                 
                             }
                             else if (tipoEmpleadoId==3) {
-                                 new Inventario().setVisible(true);
+                                 new VistaInventario().setVisible(true);
                                 
                             }
                             
