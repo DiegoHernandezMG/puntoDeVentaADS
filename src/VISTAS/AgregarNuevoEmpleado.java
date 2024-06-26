@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package VISTAS;
+import clases.Admin;
 import javax.swing.*;
 import java.awt.*;
 /**
@@ -46,22 +47,22 @@ public class AgregarNuevoEmpleado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        txt_tituloLib = new javax.swing.JTextField();
-        txt_editorialLib = new javax.swing.JTextField();
+        txt_pat = new javax.swing.JPanel();
+        txt_nombreEmp = new javax.swing.JTextField();
+        txt_patEmp = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btn_AgregarEmpleado = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        txt_editorialLib1 = new javax.swing.JTextField();
+        txt_matEmp = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         cmb_turnoEmp = new javax.swing.JComboBox<>();
         cmb_tipoEmp = new javax.swing.JComboBox<>();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        txt_password2 = new javax.swing.JPasswordField();
+        txt_password = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jButtonRegresar = new javax.swing.JButton();
@@ -70,45 +71,45 @@ public class AgregarNuevoEmpleado extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        txt_pat.setBackground(new java.awt.Color(255, 255, 255));
+        txt_pat.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txt_tituloLib.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jPanel1.add(txt_tituloLib, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 150, -1));
+        txt_nombreEmp.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txt_pat.add(txt_nombreEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 150, -1));
 
-        txt_editorialLib.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jPanel1.add(txt_editorialLib, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 150, -1));
+        txt_patEmp.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txt_pat.add(txt_patEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 150, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
         jLabel12.setText("AGREGAR NUEVO");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, 35));
+        txt_pat.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, 35));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Nombre");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
+        txt_pat.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Apellido Paterno");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, -1, -1));
+        txt_pat.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("Turno");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
+        txt_pat.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setText("Tipo");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, -1, -1));
+        txt_pat.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(209, 59, 83));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Agregar Empleado");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_AgregarEmpleado.setBackground(new java.awt.Color(209, 59, 83));
+        btn_AgregarEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btn_AgregarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
+        btn_AgregarEmpleado.setText("Agregar Empleado");
+        btn_AgregarEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_AgregarEmpleadoActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
+        txt_pat.add(btn_AgregarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(209, 59, 83));
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -119,14 +120,14 @@ public class AgregarNuevoEmpleado extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 110, -1));
+        txt_pat.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 110, -1));
 
-        txt_editorialLib1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jPanel1.add(txt_editorialLib1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 150, -1));
+        txt_matEmp.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txt_pat.add(txt_matEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 150, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setText("Apellido Materno");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, -1, -1));
+        txt_pat.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, -1, -1));
 
         cmb_turnoEmp.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cmb_turnoEmp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matutino", "Vespertino" }));
@@ -135,30 +136,30 @@ public class AgregarNuevoEmpleado extends javax.swing.JFrame {
                 cmb_turnoEmpActionPerformed(evt);
             }
         });
-        jPanel1.add(cmb_turnoEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 150, -1));
+        txt_pat.add(cmb_turnoEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 150, -1));
 
         cmb_tipoEmp.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cmb_tipoEmp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matutino", "Vespertino" }));
+        cmb_tipoEmp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Vendedor", "Almacenista" }));
         cmb_tipoEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_tipoEmpActionPerformed(evt);
             }
         });
-        jPanel1.add(cmb_tipoEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 150, -1));
+        txt_pat.add(cmb_tipoEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 150, -1));
 
-        jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 150, -1));
+        txt_password2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txt_pat.add(txt_password2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 150, -1));
 
-        jPasswordField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jPanel1.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 150, -1));
+        txt_password.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txt_pat.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 150, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Contraseña");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, -1));
+        txt_pat.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setText("Confrimar contraseña");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, -1, -1));
+        txt_pat.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, -1, -1));
 
         jButtonRegresar.setBackground(new java.awt.Color(209, 59, 83));
         jButtonRegresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -169,25 +170,25 @@ public class AgregarNuevoEmpleado extends javax.swing.JFrame {
                 jButtonRegresarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 420, 110, -1));
+        txt_pat.add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 420, 110, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
         jLabel13.setText("EMPLEADO");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, 35));
+        txt_pat.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, 35));
 
         lbl_logo.setText("logo");
         lbl_logo.setToolTipText("");
-        jPanel1.add(lbl_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 80, 70));
+        txt_pat.add(lbl_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 80, 70));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(txt_pat, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
+            .addComponent(txt_pat, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
         );
 
         pack();
@@ -205,10 +206,46 @@ public class AgregarNuevoEmpleado extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btn_AgregarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarEmpleadoActionPerformed
+       String usuario,contrasenia;
+       int tipo,sucursal=1,id;
+       char turno='M',status='A';
+       String nombre=txt_nombreEmp.getText();
+       String pat=txt_patEmp.getText();
+       String mat=txt_matEmp.getText();
+        
+       if (txt_password.getText().equals(txt_password2.getText())) {
+        contrasenia = txt_password.getText();
+        } else {
+        JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
+        return;
+        }
+          // Obtener el tipo de empleado
+        if (cmb_tipoEmp.getSelectedIndex()==0) {
+        tipo = 1;
+        } else if (cmb_tipoEmp.getSelectedIndex()==1) {
+        tipo = 2;
+        } else if (cmb_tipoEmp.getSelectedIndex()==2) {
+        tipo = 3;
+        } else {
+        JOptionPane.showMessageDialog(null, "Tipo de empleado no válido");
+        return;
+        }
+        
+        
+        
+      Admin admin= new Admin(0, null, contrasenia, turno, nombre, pat, mat, status,tipo);
+      admin.crearNuevoEmpleado();
+       
+        
+        
+        
+    }//GEN-LAST:event_btn_AgregarEmpleadoActionPerformed
 
+
+    
+    
+    
     private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
         this.setVisible(false);
         new PuntoDeVentaAdmin().setVisible(true);
@@ -251,9 +288,9 @@ public class AgregarNuevoEmpleado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_AgregarEmpleado;
     private javax.swing.JComboBox<String> cmb_tipoEmp;
     private javax.swing.JComboBox<String> cmb_turnoEmp;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonRegresar;
     private javax.swing.JLabel jLabel1;
@@ -265,12 +302,12 @@ public class AgregarNuevoEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JLabel lbl_logo;
-    private javax.swing.JTextField txt_editorialLib;
-    private javax.swing.JTextField txt_editorialLib1;
-    private javax.swing.JTextField txt_tituloLib;
+    private javax.swing.JTextField txt_matEmp;
+    private javax.swing.JTextField txt_nombreEmp;
+    private javax.swing.JPasswordField txt_password;
+    private javax.swing.JPasswordField txt_password2;
+    private javax.swing.JPanel txt_pat;
+    private javax.swing.JTextField txt_patEmp;
     // End of variables declaration//GEN-END:variables
 }

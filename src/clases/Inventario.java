@@ -10,10 +10,15 @@ import javax.swing.JOptionPane;
 public class Inventario extends Conexion {
     public List<Libro> inventario() {
         List<Libro> inventario = new ArrayList<>();
- String query = "SELECT l.\"id\", l.\"tituloLibro\", l.\"precioLibro\", l.\"stockLibro\", l.\"resumenLibro\", l.\"isbnLibro\", e.\"editorial\" AS \"editorial\", c.\"categoria\" AS \"categoria\", l.\"descuento\" " +
+        String query = "SELECT l.\"id\", l.\"tituloLibro\", l.\"precioLibro\", l.\"stockLibro\", l.\"resumenLibro\", l.\"isbnLibro\", e.\"editorial\" AS \"editorial\", c.\"categoria\" AS \"categoria\", l.\"descuento\", " +
+                       "(SELECT array_agg(a.\"autor\") " +
+                       " FROM \"public\".\"autor\" a " +
+                       " JOIN \"public\".\"autor_libros\" al ON a.\"id\" = al.\"autor_id\" " +
+                       " WHERE al.\"libro_id\" = l.\"id\") AS autores " +
                        "FROM \"public\".\"libro\" l " +
                        "JOIN \"public\".\"editorial\" e ON l.\"editorial_id\" = e.\"id\" " +
                        "JOIN \"public\".\"categoria\" c ON l.\"categoria_id\" = c.\"id\"";
+
         try (Connection conn = establecerConexion();
              PreparedStatement pst = conn.prepareStatement(query);
              ResultSet rs = pst.executeQuery()) {
@@ -21,7 +26,6 @@ public class Inventario extends Conexion {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String titulo = rs.getString("tituloLibro");
-              
                 double precio = rs.getDouble("precioLibro");
                 int stock = rs.getInt("stockLibro");
                 String resumen = rs.getString("resumenLibro");
@@ -30,7 +34,18 @@ public class Inventario extends Conexion {
                 String categoria = rs.getString("categoria");
                 double descuento = rs.getDouble("descuento");
 
-                Libro libro = new Libro(id, titulo, precio, stock, resumen, isbn, editorial, categoria, descuento);
+                // Obtener la lista de autores como una cadena separada por comas
+                String autoresString = rs.getString("autores");
+                List<String> autores = new ArrayList<>();
+                if (autoresString != null) {
+                    autoresString = autoresString.replace("{", "").replace("}", "").replace("\"", "");
+
+                    for (String autor : autoresString.split(",")) {
+                        autores.add(autor.trim());
+                    }
+                }
+
+                Libro libro = new Libro(id, titulo, precio, stock, resumen, isbn, editorial, categoria, descuento, autores);
                 inventario.add(libro);
             }
         } catch (Exception e) {

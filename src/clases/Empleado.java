@@ -12,26 +12,28 @@ import java.sql.Statement;
  *
  * @author diego
  */
-public class Empleado {
+public class Empleado extends Conexion {
     int id;
     String usuario;
-    String password;
-    Boolean turno;
+    String contrasenia;
+    char turno;
     String nombre;
     String apePaterno;
     String apeMaterno;
-    Boolean estatusEmpleado;
+    char estatusEmpleado;
+    int tipo;
  
 
- public Empleado(int id, String usuario, String password, Boolean turno, String nombre, String apePaterno, String apeMaterno, Boolean estatusEmpleado) {
+ public Empleado(int id, String usuario, String contrasenia, char turno, String nombre, String apePaterno, String apeMaterno, char estatusEmpleado,int tipo) {
         this.id = id;
         this.usuario = usuario;
-        this.password = password;
+        this.contrasenia = contrasenia;
         this.turno = turno;
         this.nombre = nombre;
         this.apePaterno = apePaterno;
         this.apeMaterno = apeMaterno;
         this.estatusEmpleado = estatusEmpleado;
+        this.tipo=tipo;
         
     }
     

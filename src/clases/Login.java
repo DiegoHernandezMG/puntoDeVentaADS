@@ -47,6 +47,8 @@ public class Login extends Conexion {
                     Statement stmt = conn.createStatement();
                     ResultSet rs = stmt.executeQuery(query);
 
+                    
+                    
                     while (rs.next()) {
                         this.statusEmpleado = rs.getString("estatusEmpleado");
                     }
@@ -105,7 +107,7 @@ public class Login extends Conexion {
                     }
                 } catch (Exception e) {
                     System.out.println("Datos incorrectos o usuario inexistente.");
-                    JOptionPane.showMessageDialog(null, e);
+                    JOptionPane.showMessageDialog(null,"Datos incorrectos o usuario inexistente." );
                     
                 }
             }

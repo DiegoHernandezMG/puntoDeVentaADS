@@ -3,12 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/lucas/OneDrive/Documentos/Semestre%205/puntoDeVentaADS-main/src/clases/Inventario.java</file>
-            <file>file:/C:/Users/lucas/OneDrive/Documentos/Semestre%205/puntoDeVentaADS-main/src/clases/Login.java</file>
-            <file>file:/C:/Users/lucas/OneDrive/Documentos/Semestre%205/puntoDeVentaADS-main/src/clases/Empleado.java</file>
-            <file>file:/C:/Users/lucas/OneDrive/Documentos/Semestre%205/puntoDeVentaADS-main/src/clases/Conexion.java</file>
-            <file>file:/C:/Users/lucas/OneDrive/Documentos/Semestre%205/puntoDeVentaADS-main/src/VISTAS/buscador.java</file>
-            <file>file:/C:/Users/lucas/OneDrive/Documentos/Semestre%205/puntoDeVentaADS-main/src/VISTAS/Ingreso.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS/src/clases/Empleado.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS/src/clases/Libro.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS/src/clases/Conexion.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS/src/Modelo/M_Ingreso.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS/src/clases/Inventario.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS/src/VISTAS/AgregarNuevoLibro.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS/src/VISTAS/AgregarNuevoEmpleado.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS/src/clases/Admin.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS/src/clases/Login.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS/src/VISTAS/Ingreso.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS/src/VISTAS/CambioContraseñaAdmin.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS/src/VISTAS/IngresoVendedor.java</file>
         </group>
     </open-files>
 </project-private>

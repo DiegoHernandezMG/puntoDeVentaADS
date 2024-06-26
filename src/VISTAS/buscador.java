@@ -52,7 +52,7 @@ public class Buscador extends javax.swing.JFrame {
         autorRadio.setSelected(false);
         tituloRadio.setSelected(true);
         
-        String[] titulos = new String[]{"Titulo", "ISBN", "Resumen", "Precio", "Stock", "Editorial", "Categoria","Descuento"};
+        String[] titulos = new String[]{"Titulo", "ISBN", "Resumen", "Precio", "Stock", "Editorial", "Categoria","Descuento","Autores"};
         dtm.setColumnIdentifiers(titulos);
         tablaBusqueda.setModel(dtm);
     }
@@ -242,11 +242,19 @@ public class Buscador extends javax.swing.JFrame {
         }   
         else if(ISBNRadio.isSelected()){
             for (Libro libro : listaLibros) {
-            if (libro.getIsbnLibro().toLowerCase().contains(input.toLowerCase())) {
+                if (libro.getIsbnLibro().toLowerCase().contains(input.toLowerCase())) {
                 resultados.add(libro);
+                }
             }
         }
-}
+        else if(autorRadio.isSelected()){
+            for (Libro libro : listaLibros) {
+                if (libro.getAutores().toLowerCase().contains(input.toLowerCase())) {
+                resultados.add(libro);
+                }
+            }
+        }
+        
          for (Libro libro : resultados) {
         Object[] rowData = {
             
@@ -257,7 +265,8 @@ public class Buscador extends javax.swing.JFrame {
             libro.getStockLibro(),
             libro.getEditorial(),
             libro.getCategoria(),
-            libro.getDescuento()
+            libro.getDescuento(),
+            libro.getAutores()
            
             
             

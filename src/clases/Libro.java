@@ -1,9 +1,12 @@
 package clases;
 
+import java.util.List;
+import java.util.StringJoiner;
+
 public class Libro {
     
     private int id;
-    
+     private List<String> autores;
     private String tituloLibro;
     private double precioLibro;
     private String resumenLibro;
@@ -13,9 +16,9 @@ public class Libro {
     private int stockLibro;
     private double descuento;
     
-    public Libro(int id, String tituloLibro, double precioLibro, int stockLibro, String resumenLibro, String isbnLibro, String editorial, String categoria, double descuento) {
+    public Libro(int id, String tituloLibro, double precioLibro, int stockLibro, String resumenLibro, String isbnLibro, String editorial, String categoria, double descuento, List<String> autores) {
         this.id = id;
-        
+        this.autores=autores;
         this.tituloLibro = tituloLibro;
         this.precioLibro = precioLibro;
         this.resumenLibro = resumenLibro;
@@ -98,6 +101,19 @@ public class Libro {
 
     public void setDescuento(double descuento) {
         this.descuento = descuento;
+    }
+    
+    
+    public String getAutores() {
+        StringJoiner joiner = new StringJoiner(", ");
+        for (String autor : autores) {
+            joiner.add(autor);
+        }
+        return joiner.toString();
+    }
+
+    public void setAutores(List<String> autores) {
+        this.autores = autores;
     }
     
     
