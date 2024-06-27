@@ -148,8 +148,7 @@ public class IngresoAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_iniciarsesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciarsesionActionPerformed
-        this.setVisible(false);
-        new PuntoDeVentaAdmin().setVisible(true);
+     
     }//GEN-LAST:event_btn_iniciarsesionActionPerformed
 
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed

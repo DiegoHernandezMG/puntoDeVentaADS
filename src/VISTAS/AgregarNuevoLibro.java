@@ -48,7 +48,6 @@ public class AgregarNuevoLibro extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         txt_tituloLib = new javax.swing.JTextField();
-        txt_editorialLib = new javax.swing.JTextField();
         txt_reusmenlib = new javax.swing.JTextField();
         txt_precioLib = new javax.swing.JTextField();
         txt_stockLib = new javax.swing.JTextField();
@@ -77,9 +76,6 @@ public class AgregarNuevoLibro extends javax.swing.JFrame {
         txt_tituloLib.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPanel1.add(txt_tituloLib, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 150, -1));
 
-        txt_editorialLib.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jPanel1.add(txt_editorialLib, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 150, -1));
-
         txt_reusmenlib.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPanel1.add(txt_reusmenlib, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 310, -1));
 
@@ -98,7 +94,7 @@ public class AgregarNuevoLibro extends javax.swing.JFrame {
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 150, -1));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 150, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Titulo");
@@ -132,7 +128,7 @@ public class AgregarNuevoLibro extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jList1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, 150, 34));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, 150, 34));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setText("Stock");
@@ -242,7 +238,6 @@ public class AgregarNuevoLibro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_logo;
-    private javax.swing.JTextField txt_editorialLib;
     private javax.swing.JTextField txt_isbnLib;
     private javax.swing.JTextField txt_precioLib;
     private javax.swing.JTextField txt_reusmenlib;

@@ -5,6 +5,7 @@
 package VISTAS;
 import javax.swing.*;
 import java.awt.*;
+import clases.Admin;
 /**
  *
  * @author diego
@@ -14,7 +15,7 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
     /**
      * Creates new form puntoDeVentaAdmin
      */
-    public PuntoDeVentaAdmin() {
+    public PuntoDeVentaAdmin( ) {
         initComponents();
         
         PointerInfo pointerInfo = MouseInfo.getPointerInfo();

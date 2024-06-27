@@ -83,6 +83,12 @@ public class Login extends Conexion {
                             
                             rs.close();
                             stmt.close();
+                            String query4 = "SELECT \"id\",\"nombresEmpleado\",\"apellidoPaternoEmpleado\",\"usuarioEmpleado\",\"contraseniaEmepleado\",\"turnoEmpleado\",\"estatusEmpleado\" FROM \"public\".\"empleado\" WHERE \"empleado_id\" = " + id;
+                            stmt = conn.createStatement();
+                            rs = stmt.executeQuery(query4);
+                            
+                            
+                             
                             if (tipoEmpleadoId==1) {
                                 
                                 new PuntoDeVentaAdmin().setVisible(true);
