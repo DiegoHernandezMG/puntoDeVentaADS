@@ -6,6 +6,7 @@ package VISTAS;
 import javax.swing.*;
 import java.awt.*;
 import clases.Admin;
+import clases.Empleado;
 /**
  *
  * @author diego
@@ -15,7 +16,10 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
     /**
      * Creates new form puntoDeVentaAdmin
      */
-    public PuntoDeVentaAdmin( ) {
+    private Admin admin;
+    
+    public PuntoDeVentaAdmin( Admin admin ) {
+         this.admin = admin;
         initComponents();
         
         PointerInfo pointerInfo = MouseInfo.getPointerInfo();
@@ -36,7 +40,14 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
         this.setVisible(true);
         Funciones.CargarLogo(lbl_logo);
         Funciones.CargarNombre(lbl_LibroNetStore);
+        if(admin==null){
+        JOptionPane.showMessageDialog(null, "admin es null");
+            
+        }
     }
+    
+   
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -156,7 +167,11 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
 
     private void jButtonInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInventarioActionPerformed
         this.setVisible(false);
-        new VistaInventario().setVisible(true);
+        
+        VistaInventario vistaInventario= new VistaInventario(null);
+        vistaInventario.setAdmin(admin);
+        vistaInventario.setVisible(true);
+        
     }//GEN-LAST:event_jButtonInventarioActionPerformed
 
     private void jButtonAgregarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarEmpleadoActionPerformed
@@ -199,7 +214,7 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PuntoDeVentaAdmin().setVisible(true);
+               new PuntoDeVentaAdmin(null).setVisible(true);
             }
         });
     }

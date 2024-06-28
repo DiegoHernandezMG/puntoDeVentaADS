@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package VISTAS;
+import clases.Admin;
+import clases.Empleado;
 import clases.Inventario;
 import clases.Libro;
 import javax.swing.*;
@@ -20,10 +22,13 @@ import javax.swing.table.TableColumn;
  */
 public class VistaInventario extends javax.swing.JFrame {
 
+    private Admin admin;
+    private Empleado empleado;
     /**
      * Creates new form Inventario
      */
-    public VistaInventario() {
+    public VistaInventario( Empleado empleado) {
+        this.empleado=empleado;
         initComponents();
         
         PointerInfo pointerInfo = MouseInfo.getPointerInfo();
@@ -47,7 +52,12 @@ public class VistaInventario extends javax.swing.JFrame {
         llenarTablaInventario();
         configurarTabla();
     }
-    
+         public void setAdmin(Admin admin) {
+        this.admin = admin;
+    }
+     public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
     
     
     private void llenarTablaInventario() {
@@ -239,11 +249,24 @@ public class VistaInventario extends javax.swing.JFrame {
 
     private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
         this.setVisible(false);
-        new PuntoDeVenta().setVisible(true);
+        new PuntoDeVenta(null).setVisible(true);
     }//GEN-LAST:event_jButtonRegresarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        if (empleado==null) {
+            
+        AgregarNuevoLibro agregarNuevoLibro= new AgregarNuevoLibro();
+        agregarNuevoLibro.setAdmin(admin);
+        agregarNuevoLibro.setVisible(true);
+            
+        }
+        else{
+         AgregarNuevoLibro agregarNuevoLibro= new AgregarNuevoLibro();
+        agregarNuevoLibro.setEmpleado(empleado);
+        agregarNuevoLibro.setVisible(true);
+        }
+       
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -277,7 +300,7 @@ public class VistaInventario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaInventario().setVisible(true);
+                new VistaInventario(null).setVisible(true);
             }
         });
     }

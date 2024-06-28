@@ -215,7 +215,7 @@ public class Buscador extends javax.swing.JFrame {
 
     private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
         this.setVisible(false);
-        new PuntoDeVenta().setVisible(true);
+        new PuntoDeVenta(null).setVisible(true);
     }//GEN-LAST:event_jButtonRegresarActionPerformed
 
     private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed

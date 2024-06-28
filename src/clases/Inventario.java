@@ -33,6 +33,7 @@ public class Inventario extends Conexion {
                 String editorial = rs.getString("editorial");
                 String categoria = rs.getString("categoria");
                 double descuento = rs.getDouble("descuento");
+                String portada="";
 
                 // Obtener la lista de autores como una cadena separada por comas
                 String autoresString = rs.getString("autores");
@@ -45,7 +46,7 @@ public class Inventario extends Conexion {
                     }
                 }
 
-                Libro libro = new Libro(id, titulo, precio, stock, resumen, isbn, editorial, categoria, descuento, autores);
+                Libro libro = new Libro(id, titulo, precio, stock, resumen, isbn, editorial, categoria, descuento, autores,portada);
                 inventario.add(libro);
             }
         } catch (Exception e) {

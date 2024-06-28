@@ -16,7 +16,7 @@ public class ReporteDeVentas extends javax.swing.JFrame {
      */
     public ReporteDeVentas() {
         initComponents();
-        
+       
         PointerInfo pointerInfo = MouseInfo.getPointerInfo();
         GraphicsDevice gd = pointerInfo.getDevice();
         Rectangle bounds = gd.getDefaultConfiguration().getBounds();

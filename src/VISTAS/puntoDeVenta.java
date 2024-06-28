@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package VISTAS;
+import clases.Empleado;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -13,11 +14,13 @@ import java.io.IOException;
  */
 public class PuntoDeVenta extends javax.swing.JFrame {
 
+    private Empleado empleado;
     /**
      * Creates new form puntoDeVenta
      */
-    public PuntoDeVenta() {
+    public PuntoDeVenta(Empleado empleado) {
         initComponents();
+        this.empleado=empleado;
         
         PointerInfo pointerInfo = MouseInfo.getPointerInfo();
         GraphicsDevice gd = pointerInfo.getDevice();
@@ -39,6 +42,11 @@ public class PuntoDeVenta extends javax.swing.JFrame {
         Funciones.CargarLogo(lbl_logo);
         Funciones.CargarNombre(lbl_LibroNetStore);
     }
+    
+      public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -148,7 +156,7 @@ public class PuntoDeVenta extends javax.swing.JFrame {
 
     private void jButtonInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInventarioActionPerformed
         this.setVisible(false);
-        new VistaInventario().setVisible(true);
+        new VistaInventario(null).setVisible(true);
     }//GEN-LAST:event_jButtonInventarioActionPerformed
 
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
@@ -186,7 +194,7 @@ public class PuntoDeVenta extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PuntoDeVenta().setVisible(true);
+                new PuntoDeVenta(null).setVisible(true);
             }
         });
     }

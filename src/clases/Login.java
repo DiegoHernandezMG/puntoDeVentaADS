@@ -10,6 +10,8 @@ import javax.swing.JOptionPane;
 import VISTAS.VistaInventario;
 import VISTAS.PuntoDeVenta;
 import VISTAS.PuntoDeVentaAdmin;
+import java.sql.PreparedStatement;
+import java.util.HashSet;
 
 /**
  *
@@ -31,94 +33,121 @@ public class Login extends Conexion {
     public Login() {
     }
     
-    public void iniciarSesion(){
+      public void iniciarSesion(){
         if(usuario.isEmpty() || contrasenia.isEmpty()){
             System.out.println("No hay datos completos.");
-            
-            
-        }else{
-         
+        } else {
             conn = establecerConexion();
-            
-            if(conn!=null){
+
+            if(conn != null) {
                 try {
-                    //String query = "SELECT \"estatusEmpleado\" FROM \"public\".empleado WHERE \"usuarioEmpleado\" = '" + usuario "';
                     String query = "SELECT \"estatusEmpleado\" FROM \"public\".\"empleado\" WHERE \"usuarioEmpleado\" = '" + usuario + "' AND \"contraseniaEmpleado\" = '" + contrasenia + "'";
                     Statement stmt = conn.createStatement();
                     ResultSet rs = stmt.executeQuery(query);
 
-                    
-                    
                     while (rs.next()) {
                         this.statusEmpleado = rs.getString("estatusEmpleado");
                     }
-                    
+
                     rs.close();
                     stmt.close();
-                   
-                    
+
                     if(statusEmpleado.equals("A")){
                         String query2 = "SELECT \"id\" FROM \"public\".\"empleado\" WHERE \"usuarioEmpleado\" = '" + usuario + "'";
                         stmt = conn.createStatement();
                         rs = stmt.executeQuery(query2);
                         int id = -1;
-                        
+
                         if (rs.next()) {
                             id = rs.getInt("id");
                         }
-                        
+
                         rs.close();
                         stmt.close();
-                        
+
                         if (id != -1) {
                             String query3 = "SELECT \"tipoempleado_id\" FROM \"public\".\"tipoEmpleado_empleados\" WHERE \"empleado_id\" = " + id;
                             stmt = conn.createStatement();
                             rs = stmt.executeQuery(query3);
-                            int tipoEmpleadoId=-1;
+                            int tipoEmpleadoId = -1;
                             if (rs.next()) {
-                                tipoEmpleadoId= rs.getInt("tipoempleado_id");
-                                // Puedes hacer algo con el tipoEmpleadoId si es necesario
+                                tipoEmpleadoId = rs.getInt("tipoempleado_id");
                                 System.out.println("Tipo de Empleado ID: " + tipoEmpleadoId);
                             }
-                            
+
                             rs.close();
                             stmt.close();
-                            String query4 = "SELECT \"id\",\"nombresEmpleado\",\"apellidoPaternoEmpleado\",\"usuarioEmpleado\",\"contraseniaEmepleado\",\"turnoEmpleado\",\"estatusEmpleado\" FROM \"public\".\"empleado\" WHERE \"empleado_id\" = " + id;
-                            stmt = conn.createStatement();
-                            rs = stmt.executeQuery(query4);
-                            
-                            
-                             
-                            if (tipoEmpleadoId==1) {
-                                
-                                new PuntoDeVentaAdmin().setVisible(true);
+
+                            String query4 = "SELECT \"id\", \"nombresEmpleado\", \"apellidoPaternoEmpleado\", \"apellidoMaternoEmpleado\", \"usuarioEmpleado\", \"contraseniaEmpleado\", \"turnoEmpleado\", \"estatusEmpleado\" FROM \"public\".\"empleado\" WHERE \"id\" = ?";
+                            PreparedStatement pst = conn.prepareStatement(query4);
+                            pst.setInt(1, id);
+                            rs = pst.executeQuery();
+
+                            Empleado empleado = null;
+                            Admin admin = null;
+                            if (rs.next()) {
+                                if (tipoEmpleadoId == 1) { // Admin
+                                    admin = new Admin(
+                                        rs.getInt("id"),
+                                        rs.getString("usuarioEmpleado"),
+                                        rs.getString("contraseniaEmpleado"),
+                                        rs.getString("turnoEmpleado").charAt(0),
+                                        rs.getString("nombresEmpleado"),
+                                        rs.getString("apellidoPaternoEmpleado"),
+                                        rs.getString("apellidoMaternoEmpleado"),
+                                        rs.getString("estatusEmpleado").charAt(0),
+                                        tipoEmpleadoId
+                                    );
+                                    JOptionPane.showMessageDialog(null, "admin no es null: " + admin.getNombre());
+                                } else { // Other types of employees
+                                    empleado = new Empleado(
+                                        rs.getInt("id"),
+                                        rs.getString("usuarioEmpleado"),
+                                        rs.getString("contraseniaEmpleado"),
+                                        rs.getString("turnoEmpleado").charAt(0),
+                                        rs.getString("nombresEmpleado"),
+                                        rs.getString("apellidoPaternoEmpleado"),
+                                        rs.getString("apellidoMaternoEmpleado"),
+                                        rs.getString("estatusEmpleado").charAt(0),
+                                        tipoEmpleadoId
+                                    );
                                 }
-                            else if (tipoEmpleadoId==2) {
-                                 new PuntoDeVenta().setVisible(true);
-                                
                             }
-                            else if (tipoEmpleadoId==3) {
-                                 new VistaInventario().setVisible(true);
+                            rs.close();
+                            pst.close();
+
+                            if (admin != null) { // Verifica si es admin o empleado
+                                PuntoDeVentaAdmin puntoDeVentaAdmin = new PuntoDeVentaAdmin(admin);
+                                puntoDeVentaAdmin.setVisible(true);
                                 
+                            } else if (empleado != null) {
+                                switch (tipoEmpleadoId) {
+                                    case 2:
+                                        PuntoDeVenta puntoDeVenta = new PuntoDeVenta(empleado);
+                                        
+                                        puntoDeVenta.setVisible(true);
+                                        break;
+                                    case 3:
+                                        VistaInventario vistaInventario = new VistaInventario(empleado);
+                                      
+                                        vistaInventario.setVisible(true);
+                                        break;
+                                    default:
+                                        System.out.println("Tipo de empleado no reconocido.");
+                                        break;
+                                }
+                            } else {
+                                System.out.println("No se encontró el ID del empleado.");
                             }
-                            
-                            System.out.println("Se inició sesión correctamente.");
-                            
-                        } else {
-                            System.out.println("No se encontró el ID del empleado.");
-                            
                         }
-                    }else{
-                        System.out.println("El empleado esta inactivo.");
-                        
+                    } else {
+                        System.out.println("El empleado está inactivo.");
                     }
                 } catch (Exception e) {
                     System.out.println("Datos incorrectos o usuario inexistente.");
-                    JOptionPane.showMessageDialog(null,"Datos incorrectos o usuario inexistente." );
-                    
+                    JOptionPane.showMessageDialog(null,"Datos incorrectos o usuario inexistente.");
                 }
             }
-            
         }
     }
 }
