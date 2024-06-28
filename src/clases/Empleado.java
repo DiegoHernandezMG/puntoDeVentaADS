@@ -118,7 +118,7 @@ import javax.swing.JOptionPane;
             JOptionPane.showMessageDialog(null, e);
         }
     }
-   public boolean insertarAutorEnBD(String autor) {
+   public boolean nuevoAutor(String autor) {
     String query = "INSERT INTO autor (autor) VALUES (?)";
     try (Connection conn = establecerConexion(); PreparedStatement stmt = conn.prepareStatement(query)) {
         stmt.setString(1, autor);
@@ -130,7 +130,7 @@ import javax.swing.JOptionPane;
     }
    }
    
-   public boolean insertarEditorialEnBD(String editorial) {
+   public boolean nuevaEditorial(String editorial) {
     String query = "INSERT INTO editorial (editorial) VALUES (?)";
     try (Connection conn = establecerConexion(); PreparedStatement stmt = conn.prepareStatement(query)) {
         stmt.setString(1, editorial);

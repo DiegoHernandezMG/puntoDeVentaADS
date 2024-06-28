@@ -274,7 +274,7 @@ public class AgregarNuevoLibro extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 460, 97, -1));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 460, 97, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
         jLabel13.setText("LIBRO");
@@ -336,7 +336,7 @@ public class AgregarNuevoLibro extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_agregarLibroActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
