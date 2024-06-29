@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -48,6 +50,8 @@ public class Inventario extends Conexion {
 
                 Libro libro = new Libro(id, titulo, precio, stock, resumen, isbn, editorial, categoria, descuento, autores,portada);
                 inventario.add(libro);
+                
+                 Collections.sort(inventario, Comparator.comparingInt(Libro::getId));
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e); // Registrar la excepción para depuración

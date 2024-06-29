@@ -4,6 +4,7 @@
  */
 package VISTAS;
 import clases.Admin;
+import clases.Almacenista;
 import clases.Empleado;
 import javax.swing.*;
 import java.awt.*;
@@ -15,8 +16,9 @@ import clases.Libro;import java.util.List;
  */
 public class AgregarNuevoLibro extends javax.swing.JFrame {
 
-     private Empleado empleado;
+     private Almacenista almacenista;
      private Admin admin;
+     private Libro libro;
      
     public AgregarNuevoLibro() {
         initComponents();
@@ -48,8 +50,11 @@ public class AgregarNuevoLibro extends javax.swing.JFrame {
         public void setAdmin(Admin admin) {
         this.admin = admin;
     }
-       public void setEmpleado(Empleado empleado) {
-        this.empleado = empleado;
+       public void setAlmacenista(Almacenista almacenista) {
+        this.almacenista = almacenista;
+    }
+         public void setLibro(Libro libro) {
+        this.libro = libro;
     }
   private void llenarListaAutores() {
         // Crear una instancia de la clase Libro para acceder al método autores()
@@ -188,6 +193,7 @@ public class AgregarNuevoLibro extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         cmb_categoria = new javax.swing.JComboBox<>();
+        btn_editarLibro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -263,7 +269,7 @@ public class AgregarNuevoLibro extends javax.swing.JFrame {
                 btn_agregarLibroActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_agregarLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, 150, -1));
+        jPanel1.add(btn_agregarLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 150, -1));
 
         jButton3.setBackground(new java.awt.Color(209, 59, 83));
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -296,7 +302,20 @@ public class AgregarNuevoLibro extends javax.swing.JFrame {
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
 
         cmb_categoria.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cmb_categoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "novedad" }));
+        cmb_categoria.setEnabled(false);
         jPanel1.add(cmb_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 150, -1));
+
+        btn_editarLibro.setBackground(new java.awt.Color(209, 59, 83));
+        btn_editarLibro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btn_editarLibro.setForeground(new java.awt.Color(255, 255, 255));
+        btn_editarLibro.setText("Editar Libro");
+        btn_editarLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_editarLibroActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_editarLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, 150, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -330,14 +349,84 @@ public class AgregarNuevoLibro extends javax.swing.JFrame {
     double descuento = Double.parseDouble(descuentoStr);
         Libro nuevoLibro = new Libro(0, titulo, precio, stock, resumen, isbn, editorial, categoria, descuento, autores,portada);
         
-             admin.agregarNuevoLibro(nuevoLibro);
+        if (almacenista==null) {
+            admin.agregarNuevoLibro(nuevoLibro);
+        }
+        else{
+            almacenista.agregarNuevoLibro(nuevoLibro);
+            
+
+        }      
     
     
     }//GEN-LAST:event_btn_agregarLibroActionPerformed
 
+    
+    public void setAutores(String autores) {
+    DefaultListModel<String> model = (DefaultListModel<String>) lst_autores.getModel();
+    String[] autoresArray = autores.split(", ");
+    for (String autor : autoresArray) {
+        int index = model.indexOf(autor);
+        if (index != -1) {
+            lst_autores.setSelectedIndex(index);
+        }
+    }
+}
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btn_editarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarLibroActionPerformed
+    int id=libro.getId();
+    String titulo = txt_tituloLib.getText();
+    String editorial = cmb_editorial.getSelectedItem().toString().trim();
+    String precioStr = txt_precioLib.getText();
+    String stockStr = txt_stockLib.getText();
+    String descuentoStr = txt_precioLib.getText();
+    String isbn = txt_isbnLib.getText();
+    String resumen = txt_reusmenlib.getText();
+   List<String> autores = lst_autores.getSelectedValuesList();
+   
+    double precio = Double.parseDouble(precioStr);
+    int stock = Integer.parseInt(stockStr);
+    
+    String categoria = "novedad"; 
+    String portada="";
+    double descuento = Double.parseDouble(descuentoStr);
+        Libro nuevoLibro = new Libro(id, titulo, precio, stock, resumen, isbn, editorial, categoria, descuento, autores,portada);
+          
+        if (almacenista==null) {
+              admin.editarLibro(nuevoLibro);
+              
+            
+        }
+        else{
+            almacenista.editarLibro(nuevoLibro);
+        
+        }
+          
+   
+    this.dispose();
+
+        if (almacenista==null) {
+            VistaInventario vistaInventario = new VistaInventario(null);
+            
+          vistaInventario.setAdmin(admin);
+         vistaInventario.setVisible(true);
+            
+        }
+        else{
+           VistaInventario vistaInventario = new VistaInventario(almacenista);
+         
+         vistaInventario.setVisible(true);
+            
+        }
+    
+        
+        
+        
+        
+    }//GEN-LAST:event_btn_editarLibroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -378,9 +467,10 @@ public class AgregarNuevoLibro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_agregarLibro;
-    private javax.swing.JComboBox<String> cmb_categoria;
-    private javax.swing.JComboBox<String> cmb_editorial;
+    public javax.swing.JButton btn_agregarLibro;
+    public javax.swing.JButton btn_editarLibro;
+    public javax.swing.JComboBox<String> cmb_categoria;
+    public javax.swing.JComboBox<String> cmb_editorial;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
@@ -397,11 +487,11 @@ public class AgregarNuevoLibro extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_logo;
     private javax.swing.JList<String> lst_autores;
-    private javax.swing.JTextField txt_descuentoLib;
-    private javax.swing.JTextField txt_isbnLib;
-    private javax.swing.JTextField txt_precioLib;
-    private javax.swing.JTextField txt_reusmenlib;
-    private javax.swing.JTextField txt_stockLib;
-    private javax.swing.JTextField txt_tituloLib;
+    public javax.swing.JTextField txt_descuentoLib;
+    public javax.swing.JTextField txt_isbnLib;
+    public javax.swing.JTextField txt_precioLib;
+    public javax.swing.JTextField txt_reusmenlib;
+    public javax.swing.JTextField txt_stockLib;
+    public javax.swing.JTextField txt_tituloLib;
     // End of variables declaration//GEN-END:variables
 }

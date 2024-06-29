@@ -83,62 +83,68 @@ public class Login extends Conexion {
                             pst.setInt(1, id);
                             rs = pst.executeQuery();
 
-                            Empleado empleado = null;
+                            Vendedor vendedor=null;
+                            Almacenista almacenista=null;
                             Admin admin = null;
+                            
                             if (rs.next()) {
-                                if (tipoEmpleadoId == 1) { // Admin
-                                    admin = new Admin(
-                                        rs.getInt("id"),
-                                        rs.getString("usuarioEmpleado"),
-                                        rs.getString("contraseniaEmpleado"),
-                                        rs.getString("turnoEmpleado").charAt(0),
-                                        rs.getString("nombresEmpleado"),
-                                        rs.getString("apellidoPaternoEmpleado"),
-                                        rs.getString("apellidoMaternoEmpleado"),
-                                        rs.getString("estatusEmpleado").charAt(0),
-                                        tipoEmpleadoId
-                                    );
-                                    JOptionPane.showMessageDialog(null, "admin no es null: " + admin.getNombre());
-                                } else { // Other types of employees
-                                    empleado = new Empleado(
-                                        rs.getInt("id"),
-                                        rs.getString("usuarioEmpleado"),
-                                        rs.getString("contraseniaEmpleado"),
-                                        rs.getString("turnoEmpleado").charAt(0),
-                                        rs.getString("nombresEmpleado"),
-                                        rs.getString("apellidoPaternoEmpleado"),
-                                        rs.getString("apellidoMaternoEmpleado"),
-                                        rs.getString("estatusEmpleado").charAt(0),
-                                        tipoEmpleadoId
-                                    );
+                                switch (tipoEmpleadoId) {
+                                    case 1:
+                                        // Admin
+                                        admin = new Admin(
+                                                rs.getInt("id"),
+                                                rs.getString("usuarioEmpleado"),
+                                                rs.getString("contraseniaEmpleado"),
+                                                rs.getString("turnoEmpleado").charAt(0),
+                                                rs.getString("nombresEmpleado"),
+                                                rs.getString("apellidoPaternoEmpleado"),
+                                                rs.getString("apellidoMaternoEmpleado"),
+                                                rs.getString("estatusEmpleado").charAt(0),
+                                                tipoEmpleadoId
+                                                
+                                        );  PuntoDeVentaAdmin puntoDeVentaAdmin = new PuntoDeVentaAdmin(admin);
+                                        puntoDeVentaAdmin.setVisible(true);
+                                        JOptionPane.showMessageDialog(null, "admin no es null: " + admin.getNombre());
+                                        break;
+                                    case 2:
+                                        vendedor = new Vendedor(
+                                                
+                                                rs.getInt("id"),
+                                                rs.getString("usuarioEmpleado"),
+                                                rs.getString("contraseniaEmpleado"),
+                                                rs.getString("turnoEmpleado").charAt(0),
+                                                rs.getString("nombresEmpleado"),
+                                                rs.getString("apellidoPaternoEmpleado"),
+                                                rs.getString("apellidoMaternoEmpleado"),
+                                                rs.getString("estatusEmpleado").charAt(0),
+                                                tipoEmpleadoId
+                                        );  PuntoDeVenta puntoDeVenta = new PuntoDeVenta(vendedor);
+                                        puntoDeVenta.setVisible(true);
+                                        break;
+                                    case 3:
+                                        almacenista = new Almacenista(
+                                                
+                                                rs.getInt("id"),
+                                                rs.getString("usuarioEmpleado"),
+                                                rs.getString("contraseniaEmpleado"),
+                                                rs.getString("turnoEmpleado").charAt(0),
+                                                rs.getString("nombresEmpleado"),
+                                                rs.getString("apellidoPaternoEmpleado"),
+                                                rs.getString("apellidoMaternoEmpleado"),
+                                                rs.getString("estatusEmpleado").charAt(0),
+                                                tipoEmpleadoId
+                                        );  VistaInventario vistaInventario = new VistaInventario(almacenista);
+                                        vistaInventario.setVisible(true);
+                                        break;
+                                    default:
+                                        break;
                                 }
+                               
                             }
                             rs.close();
                             pst.close();
 
-                            if (admin != null) { // Verifica si es admin o empleado
-                                PuntoDeVentaAdmin puntoDeVentaAdmin = new PuntoDeVentaAdmin(admin);
-                                puntoDeVentaAdmin.setVisible(true);
-                                
-                            } else if (empleado != null) {
-                                switch (tipoEmpleadoId) {
-                                    case 2:
-                                        PuntoDeVenta puntoDeVenta = new PuntoDeVenta(empleado);
-                                        
-                                        puntoDeVenta.setVisible(true);
-                                        break;
-                                    case 3:
-                                        VistaInventario vistaInventario = new VistaInventario(empleado);
-                                      
-                                        vistaInventario.setVisible(true);
-                                        break;
-                                    default:
-                                        System.out.println("Tipo de empleado no reconocido.");
-                                        break;
-                                }
-                            } else {
-                                System.out.println("No se encontró el ID del empleado.");
-                            }
+                          
                         }
                     } else {
                         System.out.println("El empleado está inactivo.");

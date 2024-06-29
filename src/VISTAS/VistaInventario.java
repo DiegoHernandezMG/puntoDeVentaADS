@@ -4,6 +4,7 @@
  */
 package VISTAS;
 import clases.Admin;
+import clases.Almacenista;
 import clases.Empleado;
 import clases.Inventario;
 import clases.Libro;
@@ -16,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
+import javax.swing.table.TableRowSorter;
 /**
  *
  * @author lucas
@@ -23,12 +25,12 @@ import javax.swing.table.TableColumn;
 public class VistaInventario extends javax.swing.JFrame {
 
     private Admin admin;
-    private Empleado empleado;
+    private Almacenista almacenista;
     /**
      * Creates new form Inventario
      */
-    public VistaInventario( Empleado empleado) {
-        this.empleado=empleado;
+    public VistaInventario( Almacenista almacenista) {
+        this.almacenista=almacenista;
         initComponents();
         
         PointerInfo pointerInfo = MouseInfo.getPointerInfo();
@@ -52,12 +54,10 @@ public class VistaInventario extends javax.swing.JFrame {
         llenarTablaInventario();
         configurarTabla();
     }
-         public void setAdmin(Admin admin) {
-        this.admin = admin;
+    public void setAdmin(Admin admin) {
+    this.admin = admin;
     }
-     public void setEmpleado(Empleado empleado) {
-        this.empleado = empleado;
-    }
+  
     
     
     private void llenarTablaInventario() {
@@ -70,6 +70,8 @@ public class VistaInventario extends javax.swing.JFrame {
         for (Libro libro : libros) {
             model.addRow(new Object[]{libro.getId(), libro.getTituloLibro(), String.join(", ", libro.getAutores()), libro.getEditorial(), libro.getPrecioLibro(), libro.getStockLibro(),"edtiar","eliminar"});
         }
+        
+        // Ordenar por la primera columna (id)
     }
     
     
@@ -80,7 +82,13 @@ public class VistaInventario extends javax.swing.JFrame {
         editColumn.setCellEditor(new ButtonEditor(new JButton("Editar"), new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Editar clickeado");
+                   int row = tabla_inventario.getSelectedRow();
+                    Inventario inventario = new Inventario();
+                    List<Libro> libros = inventario.inventario();
+
+                   
+                     Libro libro = libros.get(row); // Obtener el libro de la lista usando el índice de la fila
+                    abrirFormularioAgregarNuevoLibro(libro);
             }
         }));
                TableColumn deleteColumn = tabla_inventario.getColumnModel().getColumn(7);
@@ -92,6 +100,34 @@ public class VistaInventario extends javax.swing.JFrame {
             }
         }));
     }
+        private void abrirFormularioAgregarNuevoLibro(Libro libro) {
+        AgregarNuevoLibro agregarNuevoLibro = new AgregarNuevoLibro();
+        if (almacenista == null) {
+           
+            agregarNuevoLibro.setAdmin(admin);
+        } else {
+            agregarNuevoLibro.setAlmacenista(almacenista);
+        }
+           agregarNuevoLibro.txt_tituloLib.setText(libro.getTituloLibro());
+           agregarNuevoLibro.txt_isbnLib.setText(libro.getIsbnLibro());
+           agregarNuevoLibro.txt_reusmenlib.setText(libro.getResumenLibro());
+           agregarNuevoLibro.cmb_editorial.setSelectedItem(libro.getEditorial());
+           agregarNuevoLibro.cmb_categoria.setSelectedItem(libro.getCategoria()); 
+           agregarNuevoLibro.txt_precioLib.setText(String.valueOf(libro.getPrecioLibro()));
+           agregarNuevoLibro.txt_stockLib.setText(String.valueOf(libro.getStockLibro()));
+           agregarNuevoLibro.txt_descuentoLib.setText(String.valueOf(libro.getDescuento()));
+        // Ocultar el botón "Agregar nuevo libro"
+           agregarNuevoLibro.btn_agregarLibro.setVisible(false);
+           agregarNuevoLibro.setAutores(libro.getAutores());
+           agregarNuevoLibro.setLibro(libro);
+           agregarNuevoLibro.setVisible(true);
+        
+        
+      
+    }
+    
+    
+    
 
     class ButtonRenderer extends JButton implements TableCellRenderer {
         public ButtonRenderer() {
@@ -253,7 +289,7 @@ public class VistaInventario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonRegresarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if (empleado==null) {
+        if (almacenista==null) {
             
         AgregarNuevoLibro agregarNuevoLibro= new AgregarNuevoLibro();
         agregarNuevoLibro.setAdmin(admin);
@@ -262,7 +298,7 @@ public class VistaInventario extends javax.swing.JFrame {
         }
         else{
          AgregarNuevoLibro agregarNuevoLibro= new AgregarNuevoLibro();
-        agregarNuevoLibro.setEmpleado(empleado);
+        agregarNuevoLibro.setAlmacenista(almacenista);
         agregarNuevoLibro.setVisible(true);
         }
        
