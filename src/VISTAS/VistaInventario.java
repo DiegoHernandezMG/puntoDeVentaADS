@@ -96,7 +96,27 @@ public class VistaInventario extends javax.swing.JFrame {
         deleteColumn.setCellEditor(new ButtonEditor(new JButton("Eliminar"), new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Eliminar clickeado");
+             int row = tabla_inventario.getSelectedRow();
+            int confirm = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar este libro?", "Confirmación de eliminación", JOptionPane.YES_NO_OPTION);
+            if (confirm == JOptionPane.YES_OPTION) {
+                Inventario inventario = new Inventario();
+                List<Libro> libros = inventario.inventario();
+
+                Libro libro = libros.get(row);
+                   
+                if (almacenista==null) {
+                    admin.eliminarLibro(libro);
+                llenarTablaInventario();
+                }else{
+                
+                almacenista.eliminarLibro(libro);
+                
+                }
+                }else{
+                
+            }
+            llenarTablaInventario();
+            
             }
         }));
     }
@@ -210,7 +230,7 @@ public class VistaInventario extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jButtonRegresar = new javax.swing.JButton();
+        btn_regresar = new javax.swing.JButton();
         lbl_logo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_inventario = new javax.swing.JTable();
@@ -233,18 +253,18 @@ public class VistaInventario extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, -1, 40));
 
-        jButtonRegresar.setBackground(new java.awt.Color(209, 59, 83));
-        jButtonRegresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButtonRegresar.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonRegresar.setText("Regresar");
-        jButtonRegresar.addActionListener(new java.awt.event.ActionListener() {
+        btn_regresar.setBackground(new java.awt.Color(209, 59, 83));
+        btn_regresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btn_regresar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_regresar.setText("Regresar");
+        btn_regresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRegresarActionPerformed(evt);
+                btn_regresarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, 150, 40));
+        jPanel1.add(btn_regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 330, 150, 40));
 
         lbl_logo.setText("logo");
         lbl_logo.setToolTipText("");
@@ -283,10 +303,18 @@ public class VistaInventario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
+    private void btn_regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarActionPerformed
         this.setVisible(false);
-        new PuntoDeVenta(null).setVisible(true);
-    }//GEN-LAST:event_jButtonRegresarActionPerformed
+        if (almacenista==null) {
+            new PuntoDeVentaAdmin(admin).setVisible(true);
+            
+        }
+        else if(admin==null){
+            
+        
+    }
+        
+    }//GEN-LAST:event_btn_regresarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (almacenista==null) {
@@ -342,8 +370,8 @@ public class VistaInventario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btn_regresar;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButtonRegresar;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

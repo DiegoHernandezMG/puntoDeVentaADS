@@ -134,7 +134,9 @@ public class Login extends Conexion {
                                                 rs.getString("estatusEmpleado").charAt(0),
                                                 tipoEmpleadoId
                                         );  VistaInventario vistaInventario = new VistaInventario(almacenista);
+                                        vistaInventario.btn_regresar.setVisible(false);
                                         vistaInventario.setVisible(true);
+                                        
                                         break;
                                     default:
                                         break;

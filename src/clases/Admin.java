@@ -180,7 +180,26 @@ public class Admin extends Empleado {
     }
     
 }
-    
+ public void eliminarLibro(Libro libro){
+      
+    String query = "DELETE FROM \"public\".\"libro\" WHERE \"id\" = ?";
+
+    try (Connection conn = establecerConexion();
+         PreparedStatement pst = conn.prepareStatement(query)) {
+        pst.setInt(1, libro.getId());
+        int affectedRows = pst.executeUpdate();
+        if (affectedRows > 0) {
+            JOptionPane.showMessageDialog(null, "Libro eliminado correctamente.");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo eliminar el libro.");
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e); // Registrar la excepción para depuración
+    }
+}
+      
+     
+ 
   
     
     
