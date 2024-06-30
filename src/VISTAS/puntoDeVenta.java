@@ -65,6 +65,7 @@ public class PuntoDeVenta extends javax.swing.JFrame {
         lbl_LibroNetStore = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btn_salir = new javax.swing.JButton();
+        jButtonAgregarLista = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,18 +128,30 @@ public class PuntoDeVenta extends javax.swing.JFrame {
         });
         jPanel1.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 30, 30));
 
+        jButtonAgregarLista.setBackground(new java.awt.Color(209, 59, 83));
+        jButtonAgregarLista.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButtonAgregarLista.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonAgregarLista.setText("Checador");
+        jButtonAgregarLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAgregarListaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonAgregarLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 200, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -163,6 +176,10 @@ public class PuntoDeVenta extends javax.swing.JFrame {
         System.exit(0);
 
     }//GEN-LAST:event_btn_salirActionPerformed
+
+    private void jButtonAgregarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarListaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAgregarListaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,6 +218,7 @@ public class PuntoDeVenta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btn_salir;
+    private javax.swing.JButton jButtonAgregarLista;
     private javax.swing.JButton jButtonBuscador;
     private javax.swing.JButton jButtonInventario;
     private javax.swing.JButton jButtonListaDeVenta;
