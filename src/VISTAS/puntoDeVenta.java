@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class PuntoDeVenta extends javax.swing.JFrame {
 
-    private Empleado empleado;
+    Empleado empleado;
     /**
      * Creates new form puntoDeVenta
      */
@@ -178,7 +178,9 @@ public class PuntoDeVenta extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_salirActionPerformed
 
     private void jButtonAgregarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarListaActionPerformed
-        // TODO add your handling code here:
+        checador checador1 = new checador(this.empleado);
+        checador1.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButtonAgregarListaActionPerformed
 
     /**
