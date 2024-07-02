@@ -70,6 +70,7 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButtonAgregarEmpleado1 = new javax.swing.JButton();
         jButtonAgregarEmpleado2 = new javax.swing.JButton();
+        jButtonAgregarEmpleado3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -157,7 +158,8 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
         jButtonAgregarEmpleado2.setBackground(new java.awt.Color(209, 59, 83));
         jButtonAgregarEmpleado2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButtonAgregarEmpleado2.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonAgregarEmpleado2.setText("Agregar empleado");
+        jButtonAgregarEmpleado2.setText("Editar empleado");
+        jButtonAgregarEmpleado2.setToolTipText("");
         jButtonAgregarEmpleado2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAgregarEmpleado2ActionPerformed(evt);
@@ -165,11 +167,24 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonAgregarEmpleado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 220, 40));
 
+        jButtonAgregarEmpleado3.setBackground(new java.awt.Color(209, 59, 83));
+        jButtonAgregarEmpleado3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButtonAgregarEmpleado3.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonAgregarEmpleado3.setText("Añadir descuento");
+        jButtonAgregarEmpleado3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAgregarEmpleado3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonAgregarEmpleado3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 220, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,7 +215,7 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
 
     private void jButtonAgregarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarEmpleadoActionPerformed
         this.setVisible(false);
-        new AgregarNuevoEmpleado().setVisible(true);
+        new AgregarNuevoEmpleado(admin).setVisible(true);
     }//GEN-LAST:event_jButtonAgregarEmpleadoActionPerformed
 
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
@@ -212,8 +227,12 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAgregarEmpleado1ActionPerformed
 
     private void jButtonAgregarEmpleado2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarEmpleado2ActionPerformed
-        // TODO add your handling code here:
+    new VistaEmpleados(admin).setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonAgregarEmpleado2ActionPerformed
+
+    private void jButtonAgregarEmpleado3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarEmpleado3ActionPerformed
+    new Descuento(admin).setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAgregarEmpleado3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,6 +275,7 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAgregarEmpleado;
     private javax.swing.JButton jButtonAgregarEmpleado1;
     private javax.swing.JButton jButtonAgregarEmpleado2;
+    private javax.swing.JButton jButtonAgregarEmpleado3;
     private javax.swing.JButton jButtonBuscador;
     private javax.swing.JButton jButtonInventario;
     private javax.swing.JButton jButtonListaDeVenta;

@@ -5,26 +5,31 @@
         <group>
             <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/VISTAS/ListaDeVenta.java</file>
             <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/VISTAS/PagoTarjeta.java</file>
-            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/clases/Conexion.java</file>
-            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/VISTAS/PuntoDeVenta.java</file>
             <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/clases/Admin.java</file>
             <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/VISTAS/CambioContraseñaAdmin.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/VISTAS/Descuento.java</file>
             <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/VISTAS/ValidarNIP.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/clases/Inventario.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/VISTAS/AgregarNuevoEmpleado.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/Modelo/M_Ingreso.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/clases/Vendedor.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/clases/Login.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/clases/Libro.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/VISTAS/Ingreso.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/VISTAS/ReporteDeVentas.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/VISTAS/VistaEmpleados.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/clases/Almacenista.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/clases/ListaEmpleados.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/VISTAS/Buscador.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/clases/Conexion.java</file>
+            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/VISTAS/PuntoDeVenta.java</file>
             <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/VISTAS/IngresoAdmin.java</file>
             <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/clases/Empleado.java</file>
             <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/VISTAS/VistaInventario.java</file>
             <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/VISTAS/Funciones.java</file>
-            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/VISTAS/AgregarNuevoEmpleado.java</file>
-            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/clases/Inventario.java</file>
-            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/Modelo/M_Ingreso.java</file>
-            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/clases/Login.java</file>
-            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/clases/Libro.java</file>
             <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/VISTAS/IngresoVendedor.java</file>
-            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/VISTAS/Ingreso.java</file>
             <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/VISTAS/AgregarNuevoLibro.java</file>
-            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/VISTAS/ReporteDeVentas.java</file>
             <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/VISTAS/PuntoDeVentaAdmin.java</file>
-            <file>file:/C:/Users/lucas/OneDrive/Documentos/GitHub/puntoDeVentaADS2/src/VISTAS/Buscador.java</file>
         </group>
     </open-files>
 </project-private>

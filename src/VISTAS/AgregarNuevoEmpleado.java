@@ -4,18 +4,17 @@
  */
 package VISTAS;
 import clases.Admin;
+import clases.Empleado;
 import javax.swing.*;
 import java.awt.*;
-/**
- *
- * @author lucas
- */
+
+
 public class AgregarNuevoEmpleado extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AgregarNuevoLibro
-     */
-    public AgregarNuevoEmpleado() {
+  Admin admin;
+  Empleado empleado;
+    public AgregarNuevoEmpleado(Admin admin) {
+        this.admin=admin;
         initComponents();
         
         PointerInfo pointerInfo = MouseInfo.getPointerInfo();
@@ -36,8 +35,15 @@ public class AgregarNuevoEmpleado extends javax.swing.JFrame {
         this.setVisible(true);
         
         Funciones.CargarLogo(lbl_logo);
+           if(admin==null){
+        JOptionPane.showMessageDialog(null, "admin es null");
+            
+        }
     }
 
+        public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,7 +62,6 @@ public class AgregarNuevoEmpleado extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         btn_AgregarEmpleado = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         txt_matEmp = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         cmb_turnoEmp = new javax.swing.JComboBox<>();
@@ -68,6 +73,7 @@ public class AgregarNuevoEmpleado extends javax.swing.JFrame {
         jButtonRegresar = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         lbl_logo = new javax.swing.JLabel();
+        btn_EditarEmpleado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,18 +115,7 @@ public class AgregarNuevoEmpleado extends javax.swing.JFrame {
                 btn_AgregarEmpleadoActionPerformed(evt);
             }
         });
-        txt_pat.add(btn_AgregarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
-
-        jButton3.setBackground(new java.awt.Color(209, 59, 83));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Cancelar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        txt_pat.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 110, -1));
+        txt_pat.add(btn_AgregarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, -1, -1));
 
         txt_matEmp.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txt_pat.add(txt_matEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 150, -1));
@@ -170,7 +165,7 @@ public class AgregarNuevoEmpleado extends javax.swing.JFrame {
                 jButtonRegresarActionPerformed(evt);
             }
         });
-        txt_pat.add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 420, 110, -1));
+        txt_pat.add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 420, 110, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
         jLabel13.setText("EMPLEADO");
@@ -179,6 +174,17 @@ public class AgregarNuevoEmpleado extends javax.swing.JFrame {
         lbl_logo.setText("logo");
         lbl_logo.setToolTipText("");
         txt_pat.add(lbl_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 80, 70));
+
+        btn_EditarEmpleado.setBackground(new java.awt.Color(209, 59, 83));
+        btn_EditarEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btn_EditarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
+        btn_EditarEmpleado.setText("Editar Empleado");
+        btn_EditarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_EditarEmpleadoActionPerformed(evt);
+            }
+        });
+        txt_pat.add(btn_EditarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -202,10 +208,6 @@ public class AgregarNuevoEmpleado extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmb_turnoEmpActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void btn_AgregarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarEmpleadoActionPerformed
        String usuario,contrasenia;
        int tipo,sucursal=1,id;
@@ -220,7 +222,13 @@ public class AgregarNuevoEmpleado extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
         return;
         }
-          // Obtener el tipo de empleado
+         if (cmb_tipoEmp.getSelectedIndex()==0) {
+             turno='M';
+            
+        }
+         else{
+             turno='V';
+         }
         if (cmb_tipoEmp.getSelectedIndex()==0) {
         tipo = 1;
         } else if (cmb_tipoEmp.getSelectedIndex()==1) {
@@ -241,15 +249,54 @@ public class AgregarNuevoEmpleado extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btn_AgregarEmpleadoActionPerformed
-
+    
 
     
     
     
     private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
         this.setVisible(false);
-        new PuntoDeVentaAdmin(null).setVisible(true);
+        new PuntoDeVentaAdmin(admin).setVisible(true);
     }//GEN-LAST:event_jButtonRegresarActionPerformed
+
+    private void btn_EditarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EditarEmpleadoActionPerformed
+       String usuario,contrasenia;
+       int tipo,sucursal=1,id=empleado.getId();
+       char turno='M',status='A';
+       String nombre=txt_nombreEmp.getText();
+       String pat=txt_patEmp.getText();
+       String mat=txt_matEmp.getText();
+        
+       if (txt_password.getText().equals(txt_password2.getText())) {
+        contrasenia = txt_password.getText();
+        } else {
+        JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
+        return;
+        }
+         if (cmb_tipoEmp.getSelectedIndex()==0) {
+             turno='M';
+            
+        }
+         else{
+             turno='V';
+         }
+        if (cmb_tipoEmp.getSelectedIndex()==0) {
+        tipo = 1;
+        } else if (cmb_tipoEmp.getSelectedIndex()==1) {
+        tipo = 2;
+        } else if (cmb_tipoEmp.getSelectedIndex()==2) {
+        tipo = 3;
+        } else {
+        JOptionPane.showMessageDialog(null, "Tipo de empleado no válido");
+        return;
+        }
+        Empleado empleado= new Empleado(id, null, contrasenia, turno, nombre, pat, mat, status, tipo);
+        admin.editarEmpleado(empleado);
+        
+        this.dispose();
+        new VistaEmpleados(admin).setVisible(true);
+        
+    }//GEN-LAST:event_btn_EditarEmpleadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -282,16 +329,16 @@ public class AgregarNuevoEmpleado extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgregarNuevoEmpleado().setVisible(true);
+                new AgregarNuevoEmpleado(null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_AgregarEmpleado;
-    private javax.swing.JComboBox<String> cmb_tipoEmp;
-    private javax.swing.JComboBox<String> cmb_turnoEmp;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btn_EditarEmpleado;
+    public javax.swing.JComboBox<String> cmb_tipoEmp;
+    public javax.swing.JComboBox<String> cmb_turnoEmp;
     private javax.swing.JButton jButtonRegresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
@@ -303,11 +350,11 @@ public class AgregarNuevoEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel lbl_logo;
-    private javax.swing.JTextField txt_matEmp;
-    private javax.swing.JTextField txt_nombreEmp;
-    private javax.swing.JPasswordField txt_password;
-    private javax.swing.JPasswordField txt_password2;
+    public javax.swing.JTextField txt_matEmp;
+    public javax.swing.JTextField txt_nombreEmp;
+    public javax.swing.JPasswordField txt_password;
+    public javax.swing.JPasswordField txt_password2;
     private javax.swing.JPanel txt_pat;
-    private javax.swing.JTextField txt_patEmp;
+    public javax.swing.JTextField txt_patEmp;
     // End of variables declaration//GEN-END:variables
 }

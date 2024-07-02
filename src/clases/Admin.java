@@ -4,6 +4,7 @@
  */
 package clases;
 import VISTAS.AgregarNuevoEmpleado;
+import static java.lang.invoke.MethodHandles.identity;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 import java.sql.PreparedStatement;
@@ -75,6 +76,9 @@ public class Admin extends Empleado {
         
         
     }
+    
+    
+    
      public void agregarNuevoLibro(Libro libro) {
         String query2 = "SELECT id FROM editorial WHERE editorial = ?";
         String query3 = "SELECT id FROM categoria WHERE categoria = ?";
@@ -197,7 +201,79 @@ public class Admin extends Empleado {
         JOptionPane.showMessageDialog(null, e); // Registrar la excepción para depuración
     }
 }
+ public void editarEmpleado(Empleado empleado) {
+    String query = "UPDATE empleado SET \"nombresEmpleado\" = ?, \"apellidoPaternoEmpleado\" = ?, \"apellidoMaternoEmpleado\" = ?, \"usuarioEmpleado\" = ?, \"contraseniaEmpleado\" = ?, \"turnoEmpleado\" = ?, \"estatusEmpleado\" = ? WHERE id = ?";
+    String queryIntermedia = "UPDATE \"tipoEmpleado_empleados\" SET \"tipoempleado_id\" = ? WHERE \"empleado_id\" = ?";
+
+    try (Connection conn = establecerConexion()) {
+        String usuario = empleado.getNombre().substring(0, 1).toUpperCase() + empleado.getApePaterno().substring(0, 1).toUpperCase() + "01" + String.format("%05d", empleado.getId());
+
+        // Actualizar los datos del empleado
+        PreparedStatement pst = conn.prepareStatement(query);
+        pst.setString(1, empleado.getNombre());
+        pst.setString(2, empleado.getApePaterno());
+        pst.setString(3, empleado.getApeMaterno());
+        pst.setString(4, usuario);
+        pst.setString(5, empleado.getContrasenia());
+        pst.setString(6, String.valueOf(empleado.getTurno()));
+        pst.setString(7, String.valueOf(empleado.getEstatusEmpleado()));
+        pst.setInt(8, empleado.getId());
+
+        int rowsAffected = pst.executeUpdate();
+        if (rowsAffected > 0) {
+            JOptionPane.showMessageDialog(null, "Empleado actualizado exitosamente");
+        }
+
+        // Actualizar los datos en la tabla intermedia
+        PreparedStatement pstIntermedia = conn.prepareStatement(queryIntermedia);
+        pstIntermedia.setInt(1, empleado.getTipo());
+        pstIntermedia.setInt(2, empleado.getId());
+
+        int rowsAffectedIntermedia = pstIntermedia.executeUpdate();
+        if (rowsAffectedIntermedia > 0) {
+            JOptionPane.showMessageDialog(null, "Tipo de empleado actualizado exitosamente");
+        }
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, e);
+    }
+ }
+    public void eliminarEmpleado(Empleado empleado){
       
+    String query = "Update empleado set \"estatusEmpleado\"='B' WHERE \"id\" = ?";
+
+    try (Connection conn = establecerConexion();
+         PreparedStatement pst = conn.prepareStatement(query)) {
+        pst.setInt(1, empleado.getId());
+        int affectedRows = pst.executeUpdate();
+        if (affectedRows > 0) {
+            JOptionPane.showMessageDialog(null, "Libro eliminado correctamente.");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo eliminar el libro.");
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e); // Registrar la excepción para depuración
+    }
+}   
+    public void actualizarDescuentoLibro(int libroId, float descuento) {
+    String query = "UPDATE libro SET \"descuento\" = ? WHERE \"id\" = ?";
+    
+    try (Connection conn = establecerConexion()) {
+        PreparedStatement pst = conn.prepareStatement(query);
+        pst.setFloat(1, descuento);
+        pst.setInt(2, libroId);
+
+        int rowsAffected = pst.executeUpdate();
+        if (rowsAffected > 0) {
+            JOptionPane.showMessageDialog(null, "Descuento actualizado exitosamente para el libro con ID: " + libroId);
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontró el libro con ID: " + libroId);
+        }
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, e);
+    }
+}
      
  
   

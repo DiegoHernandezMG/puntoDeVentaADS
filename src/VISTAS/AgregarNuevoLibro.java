@@ -374,6 +374,21 @@ public class AgregarNuevoLibro extends javax.swing.JFrame {
 }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
     this.setVisible(false);
+     if (almacenista==null) {
+            VistaInventario vistaInventario = new VistaInventario(null);
+            
+          vistaInventario.setAdmin(admin);
+         vistaInventario.setVisible(true);
+            
+        }
+        else{
+           VistaInventario vistaInventario = new VistaInventario(almacenista);
+         
+         vistaInventario.setVisible(true);
+            
+        }
+    
+    
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btn_editarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarLibroActionPerformed

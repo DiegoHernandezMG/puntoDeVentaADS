@@ -104,7 +104,7 @@ public class Login extends Conexion {
                                                 
                                         );  PuntoDeVentaAdmin puntoDeVentaAdmin = new PuntoDeVentaAdmin(admin);
                                         puntoDeVentaAdmin.setVisible(true);
-                                        JOptionPane.showMessageDialog(null, "admin no es null: " + admin.getNombre());
+                                        
                                         break;
                                     case 2:
                                         vendedor = new Vendedor(
