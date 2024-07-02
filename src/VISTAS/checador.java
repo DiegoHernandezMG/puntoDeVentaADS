@@ -42,6 +42,10 @@ public class checador extends javax.swing.JFrame {
         this.setVisible(true);
         
         Funciones.CargarLogo(lbl_logo);
+        
+        System.out.println(empleado.getNombre());
+        System.out.println(empleado.getApePaterno());
+        System.out.println(empleado.getApeMaterno());
     }
 
     /**
@@ -58,6 +62,10 @@ public class checador extends javax.swing.JFrame {
         lbl_logo = new javax.swing.JLabel();
         codigo = new javax.swing.JTextField();
         jButtonAgregar = new javax.swing.JButton();
+        cantidad = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButtonAgregar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,7 +86,7 @@ public class checador extends javax.swing.JFrame {
                 codigoActionPerformed(evt);
             }
         });
-        jPanel1.add(codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 310, -1));
+        jPanel1.add(codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 170, -1));
 
         jButtonAgregar.setBackground(new java.awt.Color(209, 59, 83));
         jButtonAgregar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -89,7 +97,34 @@ public class checador extends javax.swing.JFrame {
                 jButtonAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 200, 40));
+        jPanel1.add(jButtonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 170, 40));
+
+        cantidad.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cantidadActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 140, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setText("ID DEL LIBRO");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setText("CANTIDAD");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, -1, -1));
+
+        jButtonAgregar1.setBackground(new java.awt.Color(209, 59, 83));
+        jButtonAgregar1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButtonAgregar1.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonAgregar1.setText("REGRESAR");
+        jButtonAgregar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAgregar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonAgregar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 140, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -102,7 +137,7 @@ public class checador extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -111,13 +146,28 @@ public class checador extends javax.swing.JFrame {
 
     private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
         String codigo1 = codigo.getText();
+        int cantidad1 = Integer.parseInt(cantidad.getText());
         
-        
+        if (empleado instanceof Vendedor){
+            Vendedor vendedor = (Vendedor) empleado;
+            System.out.println("Comisión: " + vendedor.getId());
+            vendedor.agregarALista(codigo1, cantidad1);
+        } 
     }//GEN-LAST:event_jButtonAgregarActionPerformed
 
     private void codigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_codigoActionPerformed
+
+    private void cantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cantidadActionPerformed
+
+    private void jButtonAgregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregar1ActionPerformed
+        PuntoDeVenta puntoDeVenta = new PuntoDeVenta(empleado);
+        puntoDeVenta.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonAgregar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,8 +205,12 @@ public class checador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField cantidad;
     private javax.swing.JTextField codigo;
     public javax.swing.JButton jButtonAgregar;
+    public javax.swing.JButton jButtonAgregar1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_lista;
     private javax.swing.JLabel lbl_logo;

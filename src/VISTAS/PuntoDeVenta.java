@@ -41,6 +41,12 @@ public class PuntoDeVenta extends javax.swing.JFrame {
         
         Funciones.CargarLogo(lbl_logo);
         Funciones.CargarNombre(lbl_LibroNetStore);
+        
+        jButtonAgregarLista.setEnabled(false);
+        
+        if(empleado.getId()==2){
+            jButtonAgregarLista.setEnabled(true);
+        }
     }
     
       public void setEmpleado(Empleado empleado) {
