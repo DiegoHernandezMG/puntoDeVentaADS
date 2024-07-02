@@ -227,11 +227,11 @@ public class Buscador extends javax.swing.JFrame {
     private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
         if(vendedor==null){
             this.setVisible(false);
-        new PuntoDeVentaAdmin(admin).setVisible(true); 
+            new PuntoDeVentaAdmin(admin).setVisible(true); 
         }
         else if(admin==null){
-             this.setVisible(false);
-        new PuntoDeVenta(vendedor).setVisible(true);
+            this.setVisible(false);
+            new PuntoDeVenta(vendedor).setVisible(true);
         }
        
     }//GEN-LAST:event_jButtonRegresarActionPerformed

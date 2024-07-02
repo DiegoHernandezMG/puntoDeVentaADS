@@ -16,10 +16,10 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
     /**
      * Creates new form puntoDeVentaAdmin
      */
-    private Admin admin;
+    Admin admin;
     
-    public PuntoDeVentaAdmin( Admin admin ) {
-         this.admin = admin;
+    public PuntoDeVentaAdmin(Admin admin) {
+        this.admin = admin;
         initComponents();
         
         PointerInfo pointerInfo = MouseInfo.getPointerInfo();
@@ -40,10 +40,9 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
         this.setVisible(true);
         Funciones.CargarLogo(lbl_logo);
         Funciones.CargarNombre(lbl_LibroNetStore);
-        if(admin==null){
-        JOptionPane.showMessageDialog(null, "admin es null");
-            
-        }
+        /*if(admin==null){
+            JOptionPane.showMessageDialog(null, "admin es null");            
+        }*/
     }
     
    
@@ -195,13 +194,15 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonListaDeVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaDeVentaActionPerformed
+        ListaDeVenta listaDeVenta = new ListaDeVenta(this.admin);
+        listaDeVenta.setVisible(true);
         this.setVisible(false);
-        new ListaDeVenta().setVisible(true);
     }//GEN-LAST:event_jButtonListaDeVentaActionPerformed
 
     private void jButtonBuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscadorActionPerformed
+        Buscador buscador = new Buscador();
         this.setVisible(false);
-        new Buscador().setVisible(true);
+        buscador.setVisible(true);
     }//GEN-LAST:event_jButtonBuscadorActionPerformed
 
     private void jButtonInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInventarioActionPerformed

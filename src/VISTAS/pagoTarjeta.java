@@ -125,7 +125,7 @@ public class PagoTarjeta extends javax.swing.JFrame {
 
     private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
         this.setVisible(false);
-        new ListaDeVenta().setVisible(true);
+        new ListaDeVenta(null).setVisible(true);
     }//GEN-LAST:event_jButtonRegresarActionPerformed
 
     /**

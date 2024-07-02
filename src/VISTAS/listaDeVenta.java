@@ -3,6 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package VISTAS;
+
+import clases.Empleado;
+import clases.Vendedor;
+import clases.Almacenista;
+import clases.Admin;
 import javax.swing.*;
 import java.awt.*;
 /**
@@ -11,11 +16,20 @@ import java.awt.*;
  */
 public class ListaDeVenta extends javax.swing.JFrame {
 
-    /**
-     * Creates new form listaDeVenta
-     */
-    public ListaDeVenta() {
+    Empleado empleado;
+    int tipoEmp;
+    
+    public ListaDeVenta(Empleado empleado) {
         initComponents();
+        this.empleado = empleado;         
+        
+        if (empleado instanceof Vendedor) {
+            tipoEmp = 1;
+        } else if (empleado instanceof Almacenista) {
+            tipoEmp = 2;
+        } else if (empleado instanceof Admin) {
+            tipoEmp = 3;
+        }
         
         PointerInfo pointerInfo = MouseInfo.getPointerInfo();
         GraphicsDevice gd = pointerInfo.getDevice();
@@ -211,8 +225,11 @@ public class ListaDeVenta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
-        this.setVisible(false);
-        new PuntoDeVenta(null).setVisible(true);
+        if(tipoEmp==1 || tipoEmp==2){
+            PuntoDeVenta puntoDeVenta = new PuntoDeVenta(empleado);
+            puntoDeVenta.setVisible(true);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_jButtonRegresarActionPerformed
 
     private void jButtonPagoTarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPagoTarjetaActionPerformed
@@ -262,7 +279,7 @@ public class ListaDeVenta extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListaDeVenta().setVisible(true);
+                new ListaDeVenta(null).setVisible(true);
             }
         });
     }
