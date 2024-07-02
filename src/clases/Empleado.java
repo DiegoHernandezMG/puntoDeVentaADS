@@ -39,6 +39,42 @@ import javax.swing.JOptionPane;
             this.tipo=tipo;
 
         }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    public char getTurno() {
+        return turno;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApePaterno() {
+        return apePaterno;
+    }
+
+    public String getApeMaterno() {
+        return apeMaterno;
+    }
+
+    public char getEstatusEmpleado() {
+        return estatusEmpleado;
+    }
+
+    public int getTipo() {
+        return tipo;
+    }
          
    
 

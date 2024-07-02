@@ -3,12 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package VISTAS;
+import clases.Admin;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
 import clases.Login;
+import clases.Vendedor;
 /**
  *
  * @author diego
@@ -50,7 +52,8 @@ public class Ingreso extends javax.swing.JFrame {
                 
         Funciones.CargarLogo(lbl_logo);
     }
-
+    
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

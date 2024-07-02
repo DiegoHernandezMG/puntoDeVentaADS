@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package clases;
-import VISTAS.Ingreso;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -34,7 +33,7 @@ public class Login extends Conexion {
     public Login() {
     }
     
-    public void iniciarSesion(){
+      public void iniciarSesion(){
         if(usuario.isEmpty() || contrasenia.isEmpty()){
             System.out.println("No hay datos completos.");
         } else {
@@ -105,7 +104,7 @@ public class Login extends Conexion {
                                                 
                                         );  PuntoDeVentaAdmin puntoDeVentaAdmin = new PuntoDeVentaAdmin(admin);
                                         puntoDeVentaAdmin.setVisible(true);
-                                        JOptionPane.showMessageDialog(null, "admin no es null: " + admin.getNombre());
+                                        
                                         break;
                                     case 2:
                                         vendedor = new Vendedor(
@@ -134,10 +133,10 @@ public class Login extends Conexion {
                                                 rs.getString("apellidoMaternoEmpleado"),
                                                 rs.getString("estatusEmpleado").charAt(0),
                                                 tipoEmpleadoId
-                                        );  
+                                        );  VistaInventario vistaInventario = new VistaInventario(almacenista);
+                                        vistaInventario.btn_regresar.setVisible(false);
+                                        vistaInventario.setVisible(true);
                                         
-                                        VistaInventario vistaInventario = new VistaInventario(almacenista);
-                                        vistaInventario.setVisible(true);                                       
                                         break;
                                     default:
                                         break;

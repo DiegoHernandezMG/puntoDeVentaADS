@@ -3,9 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package VISTAS;
+import clases.Admin;
 import clases.Conexion;
 import clases.Libro;
 import clases.Inventario;
+import clases.Vendedor;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.Connection;
@@ -19,7 +21,8 @@ import java.util.List;
  * @author diego
  */
 public class Buscador extends javax.swing.JFrame {
-
+    Admin admin;
+    Vendedor vendedor;
     Conexion conexion;
     Connection conn = null;
     
@@ -56,6 +59,14 @@ public class Buscador extends javax.swing.JFrame {
         dtm.setColumnIdentifiers(titulos);
         tablaBusqueda.setModel(dtm);
     }
+    
+       public void setAdmin(Admin admin) {
+    this.admin = admin;
+    }
+     public void setVendedor(Vendedor vendedor) {
+    this.vendedor = vendedor;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -214,8 +225,15 @@ public class Buscador extends javax.swing.JFrame {
     }//GEN-LAST:event_autorRadioActionPerformed
 
     private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
-        this.setVisible(false);
-        new PuntoDeVenta(null).setVisible(true);
+        if(vendedor==null){
+            this.setVisible(false);
+        new PuntoDeVentaAdmin(admin).setVisible(true); 
+        }
+        else if(admin==null){
+             this.setVisible(false);
+        new PuntoDeVenta(vendedor).setVisible(true);
+        }
+       
     }//GEN-LAST:event_jButtonRegresarActionPerformed
 
     private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
