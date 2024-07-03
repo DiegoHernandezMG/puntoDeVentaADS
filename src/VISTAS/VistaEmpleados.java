@@ -70,21 +70,9 @@ public class VistaEmpleados extends javax.swing.JFrame {
     DefaultTableModel model = (DefaultTableModel) tabla_empleados.getModel();
     model.setRowCount(0); // Limpiar el modelo de tabla existente
 
-    for (Empleado empleado : empleados) {
-        // Filtrar solo los empleados cuyo atributo tipo sea 2 o 3
-        if (empleado.getTipo() == 2 || empleado.getTipo() == 3) {
-            model.addRow(new Object[]{
-                empleado.getUsuario(),
-                empleado.getNombre(),
-                empleado.getApeMaterno(),
-                empleado.getApePaterno(),
-                empleado.getTipo(),
-                empleado.getEstatusEmpleado(),
-                "editar",
-                "eliminar"
-            });
+        for (Empleado empleado : empleados) {
+            model.addRow(new Object[]{ empleado.getUsuario(),empleado.getNombre(), empleado.getApeMaterno(), empleado.getApePaterno(), empleado.getTipo(), empleado.getEstatusEmpleado(),"edtiar","eliminar"});
         }
-    }
 }
     
     

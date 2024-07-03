@@ -68,7 +68,7 @@ public class VistaInventario extends javax.swing.JFrame {
         model.setRowCount(0); // Limpiar el modelo de tabla existente
 
         for (Libro libro : libros) {
-            model.addRow(new Object[]{libro.getId(), libro.getTituloLibro(), String.join(", ", libro.getAutores()), libro.getEditorial(), libro.getPrecioLibro(), libro.getStockLibro(),"edtiar","eliminar"});
+            model.addRow(new Object[]{libro.getId(), libro.getTituloLibro(), String.join(", ", libro.getAutores()), libro.getEditorial(), libro.getPrecioLibro(), libro.getStockLibro(),"edtiar"});
         }
         
         // Ordenar por la primera columna (id)
@@ -91,34 +91,7 @@ public class VistaInventario extends javax.swing.JFrame {
                     abrirFormularioAgregarNuevoLibro(libro);
             }
         }));
-               TableColumn deleteColumn = tabla_inventario.getColumnModel().getColumn(7);
-        deleteColumn.setCellRenderer(new ButtonRenderer());
-        deleteColumn.setCellEditor(new ButtonEditor(new JButton("Eliminar"), new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-             int row = tabla_inventario.getSelectedRow();
-            int confirm = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar este libro?", "Confirmación de eliminación", JOptionPane.YES_NO_OPTION);
-            if (confirm == JOptionPane.YES_OPTION) {
-                Inventario inventario = new Inventario();
-                List<Libro> libros = inventario.inventario();
 
-                Libro libro = libros.get(row);
-                   
-                if (almacenista==null) {
-                    admin.eliminarLibro(libro);
-                llenarTablaInventario();
-                }else{
-                
-                almacenista.eliminarLibro(libro);
-                
-                }
-                }else{
-                
-            }
-            llenarTablaInventario();
-            
-            }
-        }));
     }
         private void abrirFormularioAgregarNuevoLibro(Libro libro) {
         AgregarNuevoLibro agregarNuevoLibro = new AgregarNuevoLibro();
@@ -272,19 +245,18 @@ public class VistaInventario extends javax.swing.JFrame {
 
         tabla_inventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "id", "Titulo", "Autor", "Editorial", "Precio", "Stock", "Editar", "Eliminar"
+                "id", "Titulo", "Autor", "Editorial", "Precio", "Stock", "Editar"
             }
         ));
         jScrollPane1.setViewportView(tabla_inventario);
         if (tabla_inventario.getColumnModel().getColumnCount() > 0) {
             tabla_inventario.getColumnModel().getColumn(6).setPreferredWidth(100);
-            tabla_inventario.getColumnModel().getColumn(7).setPreferredWidth(100);
         }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 620, 170));
