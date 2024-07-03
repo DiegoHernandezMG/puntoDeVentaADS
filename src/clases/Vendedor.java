@@ -42,6 +42,9 @@ public class Vendedor extends Empleado{
     String autoresString;
     List<String> autores;
     
+    
+    int idTransaccion;
+    
     public Vendedor(int id, String usuario, String contrasenia, char turno, String nombre, String apePaterno, String apeMaterno, char estatusEmpleado, int tipo) {
         super(id, usuario, contrasenia, turno, nombre, apePaterno, apeMaterno, estatusEmpleado, tipo);
         this.listaDeCompra = new ArrayList<>(); // Inicializar listaDeCompra
@@ -163,28 +166,47 @@ public class Vendedor extends Empleado{
     }
     
     public void registrarTransaccion(Integer idTransaccion, Timestamp timestamp, double totalTransaccion, Integer cliente_id, Integer empleado_id, Integer tipoTransaccion_id){
-        String query = "INSERT INTO transaccion (\"id\", \"tiempoTransaccion\", \"totalTransaccion\", \"cliente_id\", \"empleado_id\", \"tipoTransaccion_id\") VALUES (?, ?, ?, ?, ?, ?)";
-        
-        try (Connection conn = establecerConexion()) {
-            PreparedStatement pst = conn.prepareStatement(query);
-            
-            pst.setDouble(1, idTransaccion);
-            pst.setTimestamp(2, timestamp);
-            pst.setDouble(3, totalTransaccion);
-            pst.setInt(4, cliente_id);
-            pst.setInt(5, empleado_id);
-            pst.setInt(6, tipoTransaccion_id);
+        try {
+            String query1 = "SELECT MAX(id) as id from transaccion";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query1);
 
-            int rowsAffected = pst.executeUpdate();
+            while (rs.next()) {
+                this.idTransaccion = rs.getInt("id") + 1;
+            }
             
-            if (rowsAffected > 0) {
-                JOptionPane.showMessageDialog(null, "Se creo la transaccion con ID: " + idTransaccion);
-            } else {
-                JOptionPane.showMessageDialog(null, "No se pudo crear la transaccion con ID: " + idTransaccion);
+            
+            String query = "INSERT INTO transaccion (\"id\", \"tiempoTransaccion\", \"totalTransaccion\", \"cliente_id\", \"empleado_id\", \"tipoTransaccion_id\") VALUES (?, ?, ?, ?, ?, ?)";
+        
+            try (Connection conn = establecerConexion()) {
+                PreparedStatement pst = conn.prepareStatement(query);
+
+                pst.setDouble(1, this.idTransaccion);
+                pst.setTimestamp(2, timestamp);
+                pst.setDouble(3, totalTransaccion);
+                pst.setInt(4, cliente_id);
+                pst.setInt(5, empleado_id);
+                pst.setInt(6, tipoTransaccion_id);
+
+                int rowsAffected = pst.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    JOptionPane.showMessageDialog(null, "Se creo la transaccion con ID: " + this.idTransaccion);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se pudo crear la transaccion con ID: " + this.idTransaccion);
+                }
+
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, e);
             }
 
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
+
+            rs.close();
+            stmt.close();
+
+        } catch (Exception e) {
+            System.out.println("No se encontro libro con el id dado.");
+            //JOptionPane.showMessageDialog(null,"Datos incorrectos o usuario inexistente.");
         }
     }
 

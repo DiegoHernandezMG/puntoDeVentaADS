@@ -103,7 +103,7 @@ public class ReporteDeVentas extends javax.swing.JFrame {
         jLabel12.setText("REPORTE  DE ");
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
         jPanel2.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 130, -1));
-        jPanel2.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 130, -1));
+        jPanel2.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 140, -1));
 
         lbl_logo.setText("logo");
         lbl_logo.setToolTipText("");
