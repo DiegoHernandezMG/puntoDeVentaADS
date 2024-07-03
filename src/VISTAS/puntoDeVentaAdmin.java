@@ -167,7 +167,7 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_salirActionPerformed
 
     private void jButtonAgregarEmpleado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarEmpleado1ActionPerformed
-        ReporteDeVentas reporte = new ReporteDeVentas();
+        ReporteDeVentas reporte = new ReporteDeVentas(admin);
         reporte.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButtonAgregarEmpleado1ActionPerformed

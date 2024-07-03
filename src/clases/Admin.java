@@ -10,6 +10,9 @@ import javax.swing.JOptionPane;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -368,6 +371,39 @@ private int obtenerIdAutor(Connection conn, String autor) throws SQLException {
     }
     return -1; // Si no se encontró el autor
 }
+
+public void generarReporte(JTable tbl_reporte, Date fechaInicio, Date fechaFin) {
+        String sql = "SELECT \"id\", \"tiempoTransaccion\", \"totalTransaccion\", \"cliente_id\", \"empleado_id\", \"tipoTransaccion_id\" " +
+                     "FROM \"transaccion\" " +
+                     "WHERE \"tiempoTransaccion\" BETWEEN ? AND ?";
+
+        try (Connection conn = this.establecerConexion();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+     pstmt.setTimestamp(1, new java.sql.Timestamp(fechaInicio.getTime()));
+pstmt.setTimestamp(2, new java.sql.Timestamp(fechaFin.getTime()));
+            
+            ResultSet rs = pstmt.executeQuery();
+
+            // Llenar la tabla con los datos obtenidos
+            DefaultTableModel model = (DefaultTableModel) tbl_reporte.getModel();
+            model.setRowCount(0);  // Limpiar la tabla antes de agregar nuevos datos
+            
+            while (rs.next()) {
+                Object[] row = new Object[6];
+                row[0] = rs.getInt("id");
+                row[1] = rs.getTimestamp("tiempoTransaccion");
+                row[2] = rs.getDouble("totalTransaccion");
+                row[3] = rs.getInt("cliente_id");
+                row[4] = rs.getInt("empleado_id");
+                row[5] = rs.getInt("tipoTransaccion_id");
+                model.addRow(row);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 
     public int getId() {
         return id;

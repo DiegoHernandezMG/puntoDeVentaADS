@@ -16,10 +16,10 @@ import javax.swing.JOptionPane;
  */
 public class Conexion {
     public Connection establecerConexion(){
-        String user = "postgres";
-        String password = "ItDontMatter1$";
-        //String user = "lucas";
-        //String password = "lucas";
+       // String user = "postgres";
+       // String password = "ItDontMatter1$";
+        String user = "lucas";
+        String password = "lucas";
         String db = "libStoreDB";
         String ip = "localhost";
         String puerto = "5432";
