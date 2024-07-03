@@ -33,7 +33,7 @@ public class Login extends Conexion {
     public Login() {
     }
     
-      public void iniciarSesion(){
+      public Boolean iniciarSesion(){
         if(usuario.isEmpty() || contrasenia.isEmpty()){
             System.out.println("No hay datos completos.");
         } else {
@@ -102,10 +102,11 @@ public class Login extends Conexion {
                                                 rs.getString("estatusEmpleado").charAt(0),
                                                 tipoEmpleadoId
                                                 
-                                        );  PuntoDeVentaAdmin puntoDeVentaAdmin = new PuntoDeVentaAdmin(admin);
+                                        );  
+                                        PuntoDeVentaAdmin puntoDeVentaAdmin = new PuntoDeVentaAdmin(admin);
                                         puntoDeVentaAdmin.setVisible(true);
+                                        return true;
                                         
-                                        break;
                                     case 2:
                                         vendedor = new Vendedor(
                                                 
@@ -118,9 +119,11 @@ public class Login extends Conexion {
                                                 rs.getString("apellidoMaternoEmpleado"),
                                                 rs.getString("estatusEmpleado").charAt(0),
                                                 tipoEmpleadoId
-                                        );  PuntoDeVenta puntoDeVenta = new PuntoDeVenta(vendedor);
+                                        );  
+                                        PuntoDeVenta puntoDeVenta = new PuntoDeVenta(vendedor);
                                         puntoDeVenta.setVisible(true);
-                                        break;
+                                        return true;
+                                    
                                     case 3:
                                         almacenista = new Almacenista(
                                                 
@@ -133,13 +136,15 @@ public class Login extends Conexion {
                                                 rs.getString("apellidoMaternoEmpleado"),
                                                 rs.getString("estatusEmpleado").charAt(0),
                                                 tipoEmpleadoId
-                                        );  VistaInventario vistaInventario = new VistaInventario(almacenista);
+                                        );  
+                                        
+                                        VistaInventario vistaInventario = new VistaInventario(almacenista);
                                         vistaInventario.btn_regresar.setVisible(false);
                                         vistaInventario.setVisible(true);
+                                        return true;
                                         
-                                        break;
                                     default:
-                                        break;
+                                        return false;
                                 }
                                
                             }
@@ -150,12 +155,15 @@ public class Login extends Conexion {
                         }
                     } else {
                         System.out.println("El empleado está inactivo.");
+                        return false;
                     }
                 } catch (Exception e) {
                     System.out.println("Datos incorrectos o usuario inexistente.");
                     JOptionPane.showMessageDialog(null,"Datos incorrectos o usuario inexistente.");
+                    return false;
                 }
             }
         }
+        return false;
     }
 }

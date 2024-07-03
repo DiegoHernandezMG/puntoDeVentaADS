@@ -60,9 +60,6 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lbl_LibroNetStore = new javax.swing.JLabel();
-        jButtonListaDeVenta = new javax.swing.JButton();
-        jButtonBuscador = new javax.swing.JButton();
-        jButtonInventario = new javax.swing.JButton();
         jButtonAgregarEmpleado = new javax.swing.JButton();
         lbl_logo = new javax.swing.JLabel();
         btn_salir = new javax.swing.JButton();
@@ -78,40 +75,7 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
 
         lbl_LibroNetStore.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
         lbl_LibroNetStore.setText("NOMBRE ");
-        jPanel1.add(lbl_LibroNetStore, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
-
-        jButtonListaDeVenta.setBackground(new java.awt.Color(209, 59, 83));
-        jButtonListaDeVenta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButtonListaDeVenta.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonListaDeVenta.setText("Lista de venta");
-        jButtonListaDeVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonListaDeVentaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButtonListaDeVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 220, 40));
-
-        jButtonBuscador.setBackground(new java.awt.Color(209, 59, 83));
-        jButtonBuscador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButtonBuscador.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonBuscador.setText("Buscador");
-        jButtonBuscador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBuscadorActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButtonBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 220, 40));
-
-        jButtonInventario.setBackground(new java.awt.Color(209, 59, 83));
-        jButtonInventario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButtonInventario.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonInventario.setText("Inventario");
-        jButtonInventario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonInventarioActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButtonInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 220, 40));
+        jPanel1.add(lbl_LibroNetStore, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
 
         jButtonAgregarEmpleado.setBackground(new java.awt.Color(209, 59, 83));
         jButtonAgregarEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -122,11 +86,11 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
                 jButtonAgregarEmpleadoActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonAgregarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 220, 40));
+        jPanel1.add(jButtonAgregarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 220, 40));
 
         lbl_logo.setText("logo");
         lbl_logo.setToolTipText("");
-        jPanel1.add(lbl_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 80, 70));
+        jPanel1.add(lbl_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 80, 70));
 
         btn_salir.setBackground(new java.awt.Color(209, 59, 83));
         btn_salir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -138,10 +102,10 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
                 btn_salirActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 30, 30));
+        jPanel1.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 30, 30));
 
         jLabel1.setText("Administrador");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
 
         jButtonAgregarEmpleado1.setBackground(new java.awt.Color(209, 59, 83));
         jButtonAgregarEmpleado1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -152,7 +116,7 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
                 jButtonAgregarEmpleado1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonAgregarEmpleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 220, 40));
+        jPanel1.add(jButtonAgregarEmpleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 220, 40));
 
         jButtonAgregarEmpleado2.setBackground(new java.awt.Color(209, 59, 83));
         jButtonAgregarEmpleado2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -164,7 +128,7 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
                 jButtonAgregarEmpleado2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonAgregarEmpleado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 220, 40));
+        jPanel1.add(jButtonAgregarEmpleado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 220, 40));
 
         jButtonAgregarEmpleado3.setBackground(new java.awt.Color(209, 59, 83));
         jButtonAgregarEmpleado3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -175,15 +139,13 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
                 jButtonAgregarEmpleado3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonAgregarEmpleado3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 220, 40));
+        jPanel1.add(jButtonAgregarEmpleado3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 220, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,27 +154,6 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonListaDeVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaDeVentaActionPerformed
-        ListaDeVenta listaDeVenta = new ListaDeVenta(this.admin);
-        listaDeVenta.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButtonListaDeVentaActionPerformed
-
-    private void jButtonBuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscadorActionPerformed
-        Buscador buscador = new Buscador();
-        this.setVisible(false);
-        buscador.setVisible(true);
-    }//GEN-LAST:event_jButtonBuscadorActionPerformed
-
-    private void jButtonInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInventarioActionPerformed
-        this.setVisible(false);
-        
-        VistaInventario vistaInventario= new VistaInventario(null);
-        vistaInventario.setAdmin(admin);
-        vistaInventario.setVisible(true);
-        
-    }//GEN-LAST:event_jButtonInventarioActionPerformed
 
     private void jButtonAgregarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarEmpleadoActionPerformed
         this.setVisible(false);
@@ -277,9 +218,6 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAgregarEmpleado1;
     private javax.swing.JButton jButtonAgregarEmpleado2;
     private javax.swing.JButton jButtonAgregarEmpleado3;
-    private javax.swing.JButton jButtonBuscador;
-    private javax.swing.JButton jButtonInventario;
-    private javax.swing.JButton jButtonListaDeVenta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_LibroNetStore;

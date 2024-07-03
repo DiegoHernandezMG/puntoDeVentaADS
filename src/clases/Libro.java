@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 public class Libro extends Conexion {
     
     private int id;
-     private List<String> autores;
+    private List<String> autores;
     private String tituloLibro;
     private double precioLibro;
     private String resumenLibro;
@@ -26,7 +26,7 @@ public class Libro extends Conexion {
     private double descuento;
     private String portadaLibro;
     
-    public Libro(int id, String tituloLibro, double precioLibro, int stockLibro, String resumenLibro, String isbnLibro, String editorial, String categoria, double descuento, List<String> autores,String portadaLibro) {
+    public Libro(int id, String tituloLibro, double precioLibro, int stockLibro, String resumenLibro, String isbnLibro, String editorial, String categoria, double descuento, List<String> autores, String portadaLibro) {
         this.id = id;
         this.autores=autores;
         this.tituloLibro = tituloLibro;
@@ -195,9 +195,21 @@ public class Libro extends Conexion {
         }
         return listaCategoria;
     }
-
+        
+    @Override
+    public String toString() {
+        return "Libro{" +
+                "idLibro=" + id +
+                ", tituloLibro='" + tituloLibro + '\'' +
+                ", precioLibro=" + precioLibro +
+                ", stockLibro=" + stockLibro +
+                ", resumenLibro='" + resumenLibro + '\'' +
+                ", isbnLibro='" + isbnLibro + '\'' +
+                ", portadaLibro='" + portadaLibro + '\'' +
+                ", descuentoLibro=" + descuento +
+                ", editorial=" + editorial +
+                ", categoria=" + categoria +
+                ", autores=" + autores +
+                '}';
+    }
 }
-    
-
-
-

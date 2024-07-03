@@ -4,10 +4,12 @@
  */
 package VISTAS;
 import clases.Empleado;
+import clases.Libro;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 /**
  *
  * @author diego
@@ -59,8 +61,6 @@ public class PuntoDeVenta extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButtonListaDeVenta = new javax.swing.JButton();
-        jButtonBuscador = new javax.swing.JButton();
-        jButtonInventario = new javax.swing.JButton();
         lbl_logo = new javax.swing.JLabel();
         lbl_LibroNetStore = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -82,28 +82,6 @@ public class PuntoDeVenta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonListaDeVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 200, 40));
-
-        jButtonBuscador.setBackground(new java.awt.Color(209, 59, 83));
-        jButtonBuscador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButtonBuscador.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonBuscador.setText("Buscador");
-        jButtonBuscador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBuscadorActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButtonBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 200, 40));
-
-        jButtonInventario.setBackground(new java.awt.Color(209, 59, 83));
-        jButtonInventario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButtonInventario.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonInventario.setText("Inventario");
-        jButtonInventario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonInventarioActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButtonInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 200, 40));
 
         lbl_logo.setText("logo");
         lbl_logo.setToolTipText("");
@@ -137,21 +115,17 @@ public class PuntoDeVenta extends javax.swing.JFrame {
                 jButtonInventario1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonInventario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 200, 40));
+        jPanel1.add(jButtonInventario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 200, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -161,16 +135,6 @@ public class PuntoDeVenta extends javax.swing.JFrame {
         this.setVisible(false);
         new ListaDeVenta(empleado).setVisible(true);
     }//GEN-LAST:event_jButtonListaDeVentaActionPerformed
-
-    private void jButtonBuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscadorActionPerformed
-        this.setVisible(false);
-        new Buscador().setVisible(true);
-    }//GEN-LAST:event_jButtonBuscadorActionPerformed
-
-    private void jButtonInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInventarioActionPerformed
-        this.setVisible(false);
-        new VistaInventario(null).setVisible(true);
-    }//GEN-LAST:event_jButtonInventarioActionPerformed
 
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
         System.exit(0);
@@ -220,8 +184,6 @@ public class PuntoDeVenta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btn_salir;
-    private javax.swing.JButton jButtonBuscador;
-    private javax.swing.JButton jButtonInventario;
     private javax.swing.JButton jButtonInventario1;
     private javax.swing.JButton jButtonListaDeVenta;
     private javax.swing.JLabel jLabel1;

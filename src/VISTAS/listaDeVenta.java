@@ -8,8 +8,11 @@ import clases.Empleado;
 import clases.Vendedor;
 import clases.Almacenista;
 import clases.Admin;
+import clases.Libro;
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author diego
@@ -21,7 +24,21 @@ public class ListaDeVenta extends javax.swing.JFrame {
     
     public ListaDeVenta(Empleado empleado) {
         initComponents();
-        this.empleado = empleado;         
+        this.empleado = empleado;
+
+        String[] columnas = {"ID", "Título del Libro", "Precio", "Cantidad"};
+        DefaultTableModel model = new DefaultTableModel(null, columnas);
+        jTable1.setModel(model);
+        
+        if (empleado instanceof Vendedor) {
+            Vendedor vendedor = (Vendedor) empleado;
+            ArrayList<Libro> listaDeCompra = vendedor.getListaDeCompra();
+            
+            for (Libro libro : listaDeCompra) {
+                Object[] row = {libro.getId(), libro.getTituloLibro(), libro.getPrecioLibro()};
+                model.addRow(row);
+            }
+        }
         
         if (empleado instanceof Vendedor) {
             tipoEmp = 1;
@@ -50,6 +67,16 @@ public class ListaDeVenta extends javax.swing.JFrame {
         
         Funciones.CargarLogo(lbl_logo);
     }
+    
+    public void actualizarTabla(ArrayList<Libro> libros) {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0); // Limpiar la tabla antes de agregar nuevos datos
+
+        for (Libro libro : libros) {
+            Object[] fila = {libro.getId(), libro.getTituloLibro(), libro.getPrecioLibro()};
+            model.addRow(fila);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,14 +100,14 @@ public class ListaDeVenta extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jButtonRegresar = new javax.swing.JButton();
         jButtonPagoTarjeta = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         lbl_lista = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         lbl_logo = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -150,14 +177,6 @@ public class ListaDeVenta extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 300, 150));
 
-        jTextArea1.setBackground(new java.awt.Color(235, 235, 235));
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setBorder(null);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 300, 190));
-
         jButtonRegresar.setBackground(new java.awt.Color(209, 59, 83));
         jButtonRegresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButtonRegresar.setForeground(new java.awt.Color(255, 255, 255));
@@ -210,6 +229,21 @@ public class ListaDeVenta extends javax.swing.JFrame {
         lbl_logo.setToolTipText("");
         jPanel1.add(lbl_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 80, 70));
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 300, 190));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -225,11 +259,9 @@ public class ListaDeVenta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
-        if(tipoEmp==1 || tipoEmp==2){
-            PuntoDeVenta puntoDeVenta = new PuntoDeVenta(empleado);
-            puntoDeVenta.setVisible(true);
-            this.setVisible(false);
-        }
+        PuntoDeVenta puntoDeVenta = new PuntoDeVenta(empleado);
+        puntoDeVenta.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButtonRegresarActionPerformed
 
     private void jButtonPagoTarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPagoTarjetaActionPerformed
@@ -301,8 +333,8 @@ public class ListaDeVenta extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbl_lista;
     private javax.swing.JLabel lbl_logo;

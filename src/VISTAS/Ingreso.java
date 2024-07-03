@@ -75,6 +75,7 @@ public class Ingreso extends javax.swing.JFrame {
         lbl_inciosesion = new javax.swing.JLabel();
         lbl_logo = new javax.swing.JLabel();
         btn_iniciarsesion = new javax.swing.JButton();
+        jButtonBuscador = new javax.swing.JButton();
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.jpeg"))); // NOI18N
@@ -143,7 +144,18 @@ public class Ingreso extends javax.swing.JFrame {
                 btn_iniciarsesionActionPerformed(evt);
             }
         });
-        Panel.add(btn_iniciarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 200, 40));
+        Panel.add(btn_iniciarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 200, 40));
+
+        jButtonBuscador.setBackground(new java.awt.Color(255, 136, 130));
+        jButtonBuscador.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jButtonBuscador.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonBuscador.setText("Buscador");
+        jButtonBuscador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscadorActionPerformed(evt);
+            }
+        });
+        Panel.add(jButtonBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 100, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -174,8 +186,10 @@ public class Ingreso extends javax.swing.JFrame {
         String contrasenia1 = contrasenia.getText();
         
         this.login = new Login(nombreUsuario1, contrasenia1);
-        login.iniciarSesion();
-      
+        boolean ingreso = login.iniciarSesion();
+        if(ingreso==true){
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_btn_iniciarsesionActionPerformed
 
     private void nombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreUsuarioActionPerformed
@@ -185,6 +199,11 @@ public class Ingreso extends javax.swing.JFrame {
     private void contraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseniaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_contraseniaActionPerformed
+
+    private void jButtonBuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscadorActionPerformed
+        this.setVisible(false);
+        new Buscador().setVisible(true);
+    }//GEN-LAST:event_jButtonBuscadorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,6 +248,7 @@ public class Ingreso extends javax.swing.JFrame {
     public javax.swing.JButton btn_iniciarsesion;
     public javax.swing.JButton btn_salir;
     public javax.swing.JPasswordField contrasenia;
+    private javax.swing.JButton jButtonBuscador;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;

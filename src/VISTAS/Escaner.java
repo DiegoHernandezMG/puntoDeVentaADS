@@ -5,11 +5,13 @@
 package VISTAS;
 import clases.Empleado;
 import clases.Vendedor;
+import clases.Libro;
 import java.awt.GraphicsDevice;
 import java.awt.MouseInfo;
 import java.awt.PointerInfo;
 import java.awt.Rectangle;
 import javax.swing.JFrame;
+import java.util.ArrayList;
 /**
  *
  * @author diego
@@ -148,7 +150,6 @@ public class Escaner extends javax.swing.JFrame {
 
         if (empleado instanceof Vendedor){
             Vendedor vendedor = (Vendedor) empleado;
-            System.out.println("Comisión: " + vendedor.getId());
             vendedor.agregarALista(codigo1, cantidad1);
         }
     }//GEN-LAST:event_agregarActionPerformed
