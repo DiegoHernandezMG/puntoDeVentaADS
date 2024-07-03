@@ -13,6 +13,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import java.sql.Timestamp;
 /**
  *
  * @author diego
@@ -21,25 +22,41 @@ public class ListaDeVenta extends javax.swing.JFrame {
 
     Empleado empleado;
     int tipoEmp;
+    double total = 0;
+    double sumatoria = 0;
     
     public ListaDeVenta(Empleado empleado) {
         initComponents();
         this.empleado = empleado;
+        pagoEfectivoText.setEnabled(false);
 
         String[] columnas = {"ID", "Título del Libro", "Precio", "Cantidad"};
         DefaultTableModel model = new DefaultTableModel(null, columnas);
         jTable1.setModel(model);
+        
+        nombreVendedor.setText(empleado.getNombre());
+        apellidoPatVendedor.setText(empleado.getApePaterno());
+        apellidoMatVendedor.setText(empleado.getApeMaterno());
         
         if (empleado instanceof Vendedor) {
             Vendedor vendedor = (Vendedor) empleado;
             ArrayList<Libro> listaDeCompra = vendedor.getListaDeCompra();
             ArrayList<Integer> arregloCantidades = vendedor.getCantidades();
             
-            for (Libro libro : listaDeCompra) {
-                Object[] row = {libro.getId(), libro.getTituloLibro(), libro.getPrecioLibro()};
+            model.setRowCount(0);
+            
+            for (int i = 0; i < listaDeCompra.size(); i++) {
+                Libro libro1 = listaDeCompra.get(i);
+                int cantidad = arregloCantidades.get(i);
+                total = (libro1.getPrecioLibro() - (libro1.getPrecioLibro()*libro1.getDescuento()))*cantidad;
+                sumatoria = sumatoria + total;
+                
+                Object[] row = {libro1.getId(), libro1.getTituloLibro(), libro1.getPrecioLibro(), cantidad};
                 model.addRow(row);
             }
         }
+        
+        totalStr.setText(Double.toString(sumatoria));
         
         if (empleado instanceof Vendedor) {
             tipoEmp = 1;
@@ -91,21 +108,22 @@ public class ListaDeVenta extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        pagoEfectivoText = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        cambio = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        nombreVendedor = new javax.swing.JLabel();
+        apellidoPatVendedor = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        totalStr = new javax.swing.JLabel();
+        apellidoMatVendedor = new javax.swing.JLabel();
+        totalStr1 = new javax.swing.JLabel();
         jButtonRegresar = new javax.swing.JButton();
         jButtonPagoTarjeta = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        finalizar = new javax.swing.JButton();
         lbl_lista = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        pagoEfectivo = new javax.swing.JButton();
         lbl_logo = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -124,13 +142,13 @@ public class ListaDeVenta extends javax.swing.JFrame {
         jLabel1.setText("Pago con:");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 113, -1));
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        pagoEfectivoText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pagoEfectivoText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                pagoEfectivoTextActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 113, -1));
+        jPanel2.add(pagoEfectivoText, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 113, -1));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -138,11 +156,11 @@ public class ListaDeVenta extends javax.swing.JFrame {
         jLabel2.setText("Su cambio:");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 113, -1));
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("XXXXXX");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 113, -1));
+        cambio.setBackground(new java.awt.Color(255, 255, 255));
+        cambio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cambio.setForeground(new java.awt.Color(255, 255, 255));
+        cambio.setText("$0");
+        jPanel2.add(cambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 113, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 180, 150));
 
@@ -153,28 +171,34 @@ public class ListaDeVenta extends javax.swing.JFrame {
         jLabel6.setText("Vendedor:");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 113, -1));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel7.setText("xxxxxxxxxx");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 113, -1));
+        nombreVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nombreVendedor.setText("xxxxxxxxxx");
+        jPanel3.add(nombreVendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 113, -1));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel8.setText("Tienda:");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel9.setText("xxxxxxxxxx");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+        apellidoPatVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        apellidoPatVendedor.setText("xxxxxxxxxx");
+        jPanel3.add(apellidoPatVendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel10.setText("Total a pagar:");
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 127, -1));
 
-        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(209, 59, 83));
-        jLabel11.setText("$100");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 113, -1));
+        totalStr.setBackground(new java.awt.Color(255, 255, 255));
+        totalStr.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        totalStr.setForeground(new java.awt.Color(209, 59, 83));
+        totalStr.setText("100");
+        jPanel3.add(totalStr, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 90, -1));
+
+        apellidoMatVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        apellidoMatVendedor.setText("xxxxxxxxxx");
+        jPanel3.add(apellidoMatVendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
+
+        totalStr1.setBackground(new java.awt.Color(255, 255, 255));
+        totalStr1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        totalStr1.setForeground(new java.awt.Color(209, 59, 83));
+        totalStr1.setText("$");
+        jPanel3.add(totalStr1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 20, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 300, 150));
 
@@ -200,31 +224,31 @@ public class ListaDeVenta extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonPagoTarjeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, 180, 40));
 
-        jButton3.setBackground(new java.awt.Color(209, 59, 83));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Finalizar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        finalizar.setBackground(new java.awt.Color(209, 59, 83));
+        finalizar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        finalizar.setForeground(new java.awt.Color(255, 255, 255));
+        finalizar.setText("Pagar");
+        finalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                finalizarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, 180, 40));
+        jPanel1.add(finalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, 180, 40));
 
         lbl_lista.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
         lbl_lista.setText("LISTA DE VENTA");
         jPanel1.add(lbl_lista, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
 
-        jButton4.setBackground(new java.awt.Color(209, 59, 83));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Pago con efectivo");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        pagoEfectivo.setBackground(new java.awt.Color(209, 59, 83));
+        pagoEfectivo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pagoEfectivo.setForeground(new java.awt.Color(255, 255, 255));
+        pagoEfectivo.setText("Pago con efectivo");
+        pagoEfectivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                pagoEfectivoActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 180, 40));
+        jPanel1.add(pagoEfectivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 180, 40));
 
         lbl_logo.setText("logo");
         lbl_logo.setToolTipText("");
@@ -266,21 +290,57 @@ public class ListaDeVenta extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonRegresarActionPerformed
 
     private void jButtonPagoTarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPagoTarjetaActionPerformed
-        this.setVisible(false);
-        new PagoTarjeta().setVisible(true);
+        new PagoTarjeta(ListaDeVenta.this).setVisible(true);
     }//GEN-LAST:event_jButtonPagoTarjetaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void finalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizarActionPerformed
+        if(pagoEfectivoText.isEnabled()==true){  
+            double cantidadIngresada = Double.parseDouble(pagoEfectivoText.getText());
+            if(cantidadIngresada >= sumatoria){
+                totalStr.setText("0");
+                double cambio1 = cantidadIngresada - sumatoria;
+                cambio.setText("$" + Double.toString(cambio1));
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+                String[] columnas = {"ID", "Título del Libro", "Precio", "Cantidad"};
+                DefaultTableModel model = new DefaultTableModel(null, columnas);
+                jTable1.setModel(model);
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+                if (empleado instanceof Vendedor) {
+                    Vendedor vendedor = (Vendedor) empleado;
+                    vendedor.limpiarListaDeCompra();
+                    vendedor.limpiarArregloCantidades();
+                    ArrayList<Libro> listaDeCompra = vendedor.getListaDeCompra();
+                    ArrayList<Integer> arregloCantidades = vendedor.getCantidades();
+
+                    model.setRowCount(0);
+
+                    for (int i = 0; i < listaDeCompra.size(); i++) {
+                        Libro libro1 = listaDeCompra.get(i);
+                        int cantidad = arregloCantidades.get(i);
+                        total = (libro1.getPrecioLibro() - (libro1.getPrecioLibro()*libro1.getDescuento()))*cantidad;
+                        sumatoria = sumatoria + total;
+
+                        Object[] row = {libro1.getId(), libro1.getTituloLibro(), libro1.getPrecioLibro(), cantidad};
+                        model.addRow(row);
+                    }
+                    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                    vendedor.registrarTransaccion(3, timestamp, sumatoria, 1, vendedor.getId(), 1);
+                }
+
+                pagoEfectivoText.setText("");
+            }else{
+                JOptionPane.showMessageDialog(null, "La cantidad ingresadano es suficiente.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_finalizarActionPerformed
+
+    private void pagoEfectivoTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagoEfectivoTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_pagoEfectivoTextActionPerformed
+
+    private void pagoEfectivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagoEfectivoActionPerformed
+        pagoEfectivoText.setEnabled(true);
+    }//GEN-LAST:event_pagoEfectivoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -318,26 +378,27 @@ public class ListaDeVenta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel apellidoMatVendedor;
+    private javax.swing.JLabel apellidoPatVendedor;
+    private javax.swing.JLabel cambio;
+    private javax.swing.JButton finalizar;
     private javax.swing.JButton jButtonPagoTarjeta;
     private javax.swing.JButton jButtonRegresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbl_lista;
     private javax.swing.JLabel lbl_logo;
+    private javax.swing.JLabel nombreVendedor;
+    private javax.swing.JButton pagoEfectivo;
+    public javax.swing.JTextField pagoEfectivoText;
+    public javax.swing.JLabel totalStr;
+    public javax.swing.JLabel totalStr1;
     // End of variables declaration//GEN-END:variables
 }

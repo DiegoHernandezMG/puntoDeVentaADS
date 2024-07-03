@@ -7,10 +7,14 @@ package clases;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.sql.Timestamp;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -48,14 +52,22 @@ public class Vendedor extends Empleado{
         listaDeCompra.add(libro);
         arregloEnteros.add(cantidad);
         
-        for (Libro libro1 : listaDeCompra) {
+        /*for (Libro libro1 : listaDeCompra) {
             System.out.println(libro1);
-        }
+        }*/
     }
     
     public ArrayList<Libro> getListaDeCompra() {
         return listaDeCompra;
-    } 
+    }
+    
+    public void limpiarListaDeCompra(){
+        listaDeCompra.clear();
+    }
+    
+    public void limpiarArregloCantidades(){
+        arregloEnteros.clear();
+    }
     
     public ArrayList<Integer> getCantidades() {
         return arregloEnteros;
@@ -147,6 +159,32 @@ public class Vendedor extends Empleado{
                 System.out.println("No se encontro libro con el id dado.");
                 //JOptionPane.showMessageDialog(null,"Datos incorrectos o usuario inexistente.");
             }
+        }
+    }
+    
+    public void registrarTransaccion(Integer idTransaccion, Timestamp timestamp, double totalTransaccion, Integer cliente_id, Integer empleado_id, Integer tipoTransaccion_id){
+        String query = "INSERT INTO transaccion (\"id\", \"tiempoTransaccion\", \"totalTransaccion\", \"cliente_id\", \"empleado_id\", \"tipoTransaccion_id\") VALUES (?, ?, ?, ?, ?, ?)";
+        
+        try (Connection conn = establecerConexion()) {
+            PreparedStatement pst = conn.prepareStatement(query);
+            
+            pst.setDouble(1, idTransaccion);
+            pst.setTimestamp(2, timestamp);
+            pst.setDouble(3, totalTransaccion);
+            pst.setInt(4, cliente_id);
+            pst.setInt(5, empleado_id);
+            pst.setInt(6, tipoTransaccion_id);
+
+            int rowsAffected = pst.executeUpdate();
+            
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(null, "Se creo la transaccion con ID: " + idTransaccion);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo crear la transaccion con ID: " + idTransaccion);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
         }
     }
 

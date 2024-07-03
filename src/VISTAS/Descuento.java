@@ -5,6 +5,11 @@
 package VISTAS;
 
 import clases.Admin;
+import java.awt.GraphicsDevice;
+import java.awt.MouseInfo;
+import java.awt.PointerInfo;
+import java.awt.Rectangle;
+import javax.swing.JFrame;
 
 /**
  *
@@ -18,6 +23,23 @@ public class Descuento extends javax.swing.JFrame {
     public Descuento(Admin admin) {
         initComponents();
         this.admin=admin;
+        
+        PointerInfo pointerInfo = MouseInfo.getPointerInfo();
+        GraphicsDevice gd = pointerInfo.getDevice();
+        Rectangle bounds = gd.getDefaultConfiguration().getBounds();
+
+        // Obtener las dimensiones del formulario
+        int frameWidth = 400;  // Ancho del formulario
+        int frameHeight = 430; // Alto del formulario
+
+        // Calcular las coordenadas para centrar el formulario
+        int x = bounds.x + (bounds.width - frameWidth) / 2;
+        int y = bounds.y + (bounds.height - frameHeight) / 2;
+
+        //this.setSize(frameWidth, frameHeight);
+        this.setLocation(x, y);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
     }
 
     /**
@@ -49,10 +71,10 @@ public class Descuento extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Nuevo Descuento");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 150, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 150, -1));
 
         txt_descuento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jPanel1.add(txt_descuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 120, 30));
+        jPanel1.add(txt_descuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 140, 30));
 
         btn_aceptar.setBackground(new java.awt.Color(255, 136, 130));
         btn_aceptar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -63,14 +85,14 @@ public class Descuento extends javax.swing.JFrame {
                 btn_aceptarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 120, 40));
+        jPanel1.add(btn_aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 140, 40));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setText("Id Libro");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 70, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 70, -1));
 
         txt_libro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jPanel1.add(txt_libro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 120, 30));
+        jPanel1.add(txt_libro, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 140, 30));
 
         btn_cancelar.setBackground(new java.awt.Color(255, 136, 130));
         btn_cancelar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -81,7 +103,7 @@ public class Descuento extends javax.swing.JFrame {
                 btn_cancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 120, 40));
+        jPanel1.add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 150, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,16 +120,18 @@ public class Descuento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
-          int libro = Integer.parseInt(txt_libro.getText()); 
-        float descuento = Float.parseFloat(txt_descuento.getText());
+        int libro = Integer.parseInt(txt_descuento.getText()); 
+        double descuento = Double.parseDouble(txt_libro.getText());
         
         admin.actualizarDescuentoLibro(libro, descuento);
-        this.dispose();
-        new PuntoDeVenta(admin).setVisible(true);
+        
+        new PuntoDeVentaAdmin(admin).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btn_aceptarActionPerformed
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
-        this.dispose();
+        new PuntoDeVentaAdmin(admin).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
     /**

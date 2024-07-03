@@ -71,7 +71,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
     model.setRowCount(0); // Limpiar el modelo de tabla existente
 
         for (Empleado empleado : empleados) {
-            model.addRow(new Object[]{ empleado.getUsuario(),empleado.getNombre(), empleado.getApeMaterno(), empleado.getApePaterno(), empleado.getTipo(), empleado.getEstatusEmpleado(),"edtiar","eliminar"});
+            model.addRow(new Object[]{ empleado.getUsuario(),empleado.getNombre(), empleado.getApeMaterno(), empleado.getApePaterno(), empleado.getTipo(), empleado.getEstatusEmpleado(),"edtiar"});
         }
 }
     
@@ -90,52 +90,23 @@ public class VistaEmpleados extends javax.swing.JFrame {
                     setVisible(false);
                     Empleado empleado = empleados.get(row); 
                     abrirFormularioAgregarNuevoEmpleado(empleado);
-                    AgregarNuevoEmpleado agregarEmpleado = new AgregarNuevoEmpleado(admin);
-                    agregarEmpleado.btn_AgregarEmpleado.setVisible(false);
-            }
-        }));
-               TableColumn deleteColumn = tabla_empleados.getColumnModel().getColumn(7);
-        deleteColumn.setCellRenderer(new ButtonRenderer());
-        deleteColumn.setCellEditor(new ButtonEditor(new JButton("Eliminar"), new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                
-             int row = tabla_empleados.getSelectedRow();
-            int confirm = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar este libro?", "Confirmación de eliminación", JOptionPane.YES_NO_OPTION);
-            if (confirm == JOptionPane.YES_OPTION) {
-                  ListaEmpleados listaEmpleados = new ListaEmpleados();
-                  List<Empleado> empleados = listaEmpleados.Empleados();
-
-                   
-                  Empleado empleado = empleados.get(row); 
-                  admin.eliminarEmpleado(empleado);
-              
-                }else{
-                
-            }
-            llenarTablaEmpleados();
-            
+                    //AgregarNuevoEmpleado agregarEmpleado = new AgregarNuevoEmpleado(admin);
             }
         }));
     }
-     private void abrirFormularioAgregarNuevoEmpleado(Empleado empleado) {
-       AgregarNuevoEmpleado agregarNuevoEmpleado= new AgregarNuevoEmpleado(admin);
-       agregarNuevoEmpleado.setEmpleado(empleado);
-       agregarNuevoEmpleado.txt_nombreEmp.setText(empleado.getNombre());
-       agregarNuevoEmpleado.txt_patEmp.setText(empleado.getApePaterno());
-       agregarNuevoEmpleado.txt_matEmp.setText(empleado.getApeMaterno());
-       agregarNuevoEmpleado.cmb_tipoEmp.setSelectedItem(empleado.getTipo());
-       agregarNuevoEmpleado.cmb_turnoEmp.setSelectedItem(empleado.getTurno());
-       agregarNuevoEmpleado.setVisible(true);
-          
-        
-        
-      
+    
+    private void abrirFormularioAgregarNuevoEmpleado(Empleado empleado) {
+        AgregarNuevoEmpleado agregarNuevoEmpleado= new AgregarNuevoEmpleado(admin);
+        agregarNuevoEmpleado.setEmpleado(empleado);
+        agregarNuevoEmpleado.txt_nombreEmp.setText(empleado.getNombre());
+        agregarNuevoEmpleado.txt_patEmp.setText(empleado.getApePaterno());
+        agregarNuevoEmpleado.txt_matEmp.setText(empleado.getApeMaterno());
+        agregarNuevoEmpleado.cmb_tipoEmp.setSelectedItem(empleado.getTipo());
+        agregarNuevoEmpleado.cmb_turnoEmp.setSelectedItem(empleado.getTurno());
+        agregarNuevoEmpleado.setVisible(true);
+        agregarNuevoEmpleado.btn_AgregarEmpleado.setVisible(false);
     }
     
-    
-    
-
     class ButtonRenderer extends JButton implements TableCellRenderer {
         public ButtonRenderer() {
               setMargin(new Insets(2, 0, 2, 0)); // Ajustar los márgenes del botón
@@ -247,19 +218,18 @@ public class VistaEmpleados extends javax.swing.JFrame {
 
         tabla_empleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Usuario", "Nombres", "Paterno", "Materno", "Tipo", "Status", "Editar", "Eliminar"
+                "Usuario", "Nombres", "Paterno", "Materno", "Tipo", "Status", "Editar"
             }
         ));
         jScrollPane1.setViewportView(tabla_empleados);
         if (tabla_empleados.getColumnModel().getColumnCount() > 0) {
             tabla_empleados.getColumnModel().getColumn(6).setPreferredWidth(100);
-            tabla_empleados.getColumnModel().getColumn(7).setPreferredWidth(100);
         }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 620, 170));

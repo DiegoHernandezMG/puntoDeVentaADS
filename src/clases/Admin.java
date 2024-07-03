@@ -255,12 +255,12 @@ public class Admin extends Empleado {
         JOptionPane.showMessageDialog(null, e); // Registrar la excepción para depuración
     }
 }   
-    public void actualizarDescuentoLibro(int libroId, float descuento) {
+    public void actualizarDescuentoLibro(int libroId, double descuento) {
     String query = "UPDATE libro SET \"descuento\" = ? WHERE \"id\" = ?";
     
     try (Connection conn = establecerConexion()) {
         PreparedStatement pst = conn.prepareStatement(query);
-        pst.setFloat(1, descuento);
+        pst.setDouble(1, descuento);
         pst.setInt(2, libroId);
 
         int rowsAffected = pst.executeUpdate();

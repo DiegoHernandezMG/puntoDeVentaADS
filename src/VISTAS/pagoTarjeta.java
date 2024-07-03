@@ -11,11 +11,12 @@ import java.awt.*;
  */
 public class PagoTarjeta extends javax.swing.JFrame {
 
-    /**
-     * Creates new form pagoTarjeta
-     */
-    public PagoTarjeta() {
+    private ListaDeVenta listaDeVenta;
+    
+    public PagoTarjeta(ListaDeVenta listaDeVenta) {
         initComponents();
+        numeroNIP.setEnabled(false);
+        this.listaDeVenta = listaDeVenta;
         
         PointerInfo pointerInfo = MouseInfo.getPointerInfo();
         GraphicsDevice gd = pointerInfo.getDevice();
@@ -49,13 +50,13 @@ public class PagoTarjeta extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        numeroTarjeta = new javax.swing.JTextField();
         jButtonValidar = new javax.swing.JButton();
         jButtonRegresar = new javax.swing.JButton();
         lbl_logo = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        numeroNIP = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,7 +70,7 @@ public class PagoTarjeta extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Ingresa número de tarjeta:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 240, -1));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 360, 30));
+        jPanel1.add(numeroTarjeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 360, 30));
 
         jButtonValidar.setBackground(new java.awt.Color(255, 136, 130));
         jButtonValidar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -85,7 +86,7 @@ public class PagoTarjeta extends javax.swing.JFrame {
         jButtonRegresar.setBackground(new java.awt.Color(209, 59, 83));
         jButtonRegresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButtonRegresar.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonRegresar.setText("Regresar");
+        jButtonRegresar.setText("Pagar");
         jButtonRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRegresarActionPerformed(evt);
@@ -103,7 +104,7 @@ public class PagoTarjeta extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setText("Ingresa tu NIP:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 240, -1));
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 360, 30));
+        jPanel1.add(numeroNIP, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 360, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,12 +121,26 @@ public class PagoTarjeta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValidarActionPerformed
-        //this.setVisible(false);
+        if(numeroTarjeta.getText()!=""){
+            String numeroTarjeta1 = numeroTarjeta.getText();
+            if(numeroTarjeta1.length()==16){
+                numeroNIP.setEnabled(true);
+            }else{
+                numeroNIP.setEnabled(false);
+                numeroNIP.setText("");
+            }
+        }
     }//GEN-LAST:event_jButtonValidarActionPerformed
 
     private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
-        this.setVisible(false);
-        new ListaDeVenta(null).setVisible(true);
+        if(numeroNIP.getText().length()==4){
+            String pago = this.listaDeVenta.totalStr.getText();
+            this.listaDeVenta.pagoEfectivoText.setText(pago);
+            this.listaDeVenta.pagoEfectivoText.setEnabled(true);
+            this.setVisible(false);
+        }else{
+            JOptionPane.showMessageDialog(null, "Tu NIP debe ser de 4 digitos", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonRegresarActionPerformed
 
     /**
@@ -158,7 +173,7 @@ public class PagoTarjeta extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PagoTarjeta().setVisible(true);
+                new PagoTarjeta(null).setVisible(true);
             }
         });
     }
@@ -171,8 +186,8 @@ public class PagoTarjeta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lbl_logo;
+    private javax.swing.JTextField numeroNIP;
+    private javax.swing.JTextField numeroTarjeta;
     // End of variables declaration//GEN-END:variables
 }

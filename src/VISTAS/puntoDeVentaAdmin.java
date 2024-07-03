@@ -156,13 +156,10 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAgregarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarEmpleadoActionPerformed
-       
-       
-        
         AgregarNuevoEmpleado agregarEmpleado = new AgregarNuevoEmpleado(admin);
         agregarEmpleado.btn_EditarEmpleado.setVisible(false);
         agregarEmpleado.setVisible(true);
-         this.setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_jButtonAgregarEmpleadoActionPerformed
 
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
@@ -174,11 +171,13 @@ public class PuntoDeVentaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAgregarEmpleado1ActionPerformed
 
     private void jButtonAgregarEmpleado2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarEmpleado2ActionPerformed
-    new VistaEmpleados(admin).setVisible(true);        // TODO add your handling code here:
+        new VistaEmpleados(admin).setVisible(true);        // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_jButtonAgregarEmpleado2ActionPerformed
 
     private void jButtonAgregarEmpleado3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarEmpleado3ActionPerformed
-    new Descuento(admin).setVisible(true);        // TODO add your handling code here:
+        new Descuento(admin).setVisible(true);        // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_jButtonAgregarEmpleado3ActionPerformed
 
     /**

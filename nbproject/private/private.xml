@@ -4,14 +4,20 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/THE%20DHS%20MOTHERSHIP/ESCUELA/ESCOM/5to%20Semestre/ADSProyecto/puntoDeVentaADS/src/VISTAS/ReporteDeVentas.java</file>
-            <file>file:/D:/THE%20DHS%20MOTHERSHIP/ESCUELA/ESCOM/5to%20Semestre/ADSProyecto/puntoDeVentaADS/src/VISTAS/PuntoDeVentaAdmin.java</file>
             <file>file:/D:/THE%20DHS%20MOTHERSHIP/ESCUELA/ESCOM/5to%20Semestre/ADSProyecto/puntoDeVentaADS/src/clases/Vendedor.java</file>
+            <file>file:/D:/THE%20DHS%20MOTHERSHIP/ESCUELA/ESCOM/5to%20Semestre/ADSProyecto/puntoDeVentaADS/src/VISTAS/Ingreso.java</file>
+            <file>file:/D:/THE%20DHS%20MOTHERSHIP/ESCUELA/ESCOM/5to%20Semestre/ADSProyecto/puntoDeVentaADS/src/clases/Almacenista.java</file>
+            <file>file:/D:/THE%20DHS%20MOTHERSHIP/ESCUELA/ESCOM/5to%20Semestre/ADSProyecto/puntoDeVentaADS/src/VISTAS/ingresoAdmin.java</file>
+            <file>file:/D:/THE%20DHS%20MOTHERSHIP/ESCUELA/ESCOM/5to%20Semestre/ADSProyecto/puntoDeVentaADS/src/clases/Libro.java</file>
+            <file>file:/D:/THE%20DHS%20MOTHERSHIP/ESCUELA/ESCOM/5to%20Semestre/ADSProyecto/puntoDeVentaADS/src/clases/Conexion.java</file>
+            <file>file:/D:/THE%20DHS%20MOTHERSHIP/ESCUELA/ESCOM/5to%20Semestre/ADSProyecto/puntoDeVentaADS/src/VISTAS/VistaEmpleados.java</file>
+            <file>file:/D:/THE%20DHS%20MOTHERSHIP/ESCUELA/ESCOM/5to%20Semestre/ADSProyecto/puntoDeVentaADS/src/VISTAS/AgregarNuevoEmpleado.java</file>
             <file>file:/D:/THE%20DHS%20MOTHERSHIP/ESCUELA/ESCOM/5to%20Semestre/ADSProyecto/puntoDeVentaADS/src/VISTAS/Escaner.java</file>
             <file>file:/D:/THE%20DHS%20MOTHERSHIP/ESCUELA/ESCOM/5to%20Semestre/ADSProyecto/puntoDeVentaADS/src/VISTAS/VistaInventario.java</file>
-            <file>file:/D:/THE%20DHS%20MOTHERSHIP/ESCUELA/ESCOM/5to%20Semestre/ADSProyecto/puntoDeVentaADS/src/clases/Almacenista.java</file>
+            <file>file:/D:/THE%20DHS%20MOTHERSHIP/ESCUELA/ESCOM/5to%20Semestre/ADSProyecto/puntoDeVentaADS/src/VISTAS/puntoDeVentaAdmin.java</file>
+            <file>file:/D:/THE%20DHS%20MOTHERSHIP/ESCUELA/ESCOM/5to%20Semestre/ADSProyecto/puntoDeVentaADS/src/VISTAS/AgregarNuevoLibro.java</file>
             <file>file:/D:/THE%20DHS%20MOTHERSHIP/ESCUELA/ESCOM/5to%20Semestre/ADSProyecto/puntoDeVentaADS/src/VISTAS/PuntoDeVenta.java</file>
             <file>file:/D:/THE%20DHS%20MOTHERSHIP/ESCUELA/ESCOM/5to%20Semestre/ADSProyecto/puntoDeVentaADS/src/VISTAS/ListaDeVenta.java</file>
-            <file>file:/D:/THE%20DHS%20MOTHERSHIP/ESCUELA/ESCOM/5to%20Semestre/ADSProyecto/puntoDeVentaADS/src/clases/Libro.java</file>
         </group>
     </open-files>
 </project-private>

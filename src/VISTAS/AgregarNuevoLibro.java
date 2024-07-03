@@ -397,7 +397,7 @@ public class AgregarNuevoLibro extends javax.swing.JFrame {
     String editorial = cmb_editorial.getSelectedItem().toString().trim();
     String precioStr = txt_precioLib.getText();
     String stockStr = txt_stockLib.getText();
-    String descuentoStr = txt_precioLib.getText();
+    String descuentoStr = txt_descuentoLib.getText();
     String isbn = txt_isbnLib.getText();
     String resumen = txt_reusmenlib.getText();
    List<String> autores = lst_autores.getSelectedValuesList();
