@@ -1,0 +1,3 @@
+VISTAS.ValidarNIP$2
+VISTAS.ValidarNIP$1
+VISTAS.ValidarNIP

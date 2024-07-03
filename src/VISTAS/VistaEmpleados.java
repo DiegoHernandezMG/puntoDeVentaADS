@@ -87,10 +87,11 @@ public class VistaEmpleados extends javax.swing.JFrame {
                     ListaEmpleados listaEmpleados = new ListaEmpleados();
                     List<Empleado> empleados = listaEmpleados.Empleados();
 
-                   
-                     Empleado empleado = empleados.get(row); 
-                
+                    setVisible(false);
+                    Empleado empleado = empleados.get(row); 
                     abrirFormularioAgregarNuevoEmpleado(empleado);
+                    AgregarNuevoEmpleado agregarEmpleado = new AgregarNuevoEmpleado(admin);
+                    agregarEmpleado.btn_AgregarEmpleado.setVisible(false);
             }
         }));
                TableColumn deleteColumn = tabla_empleados.getColumnModel().getColumn(7);

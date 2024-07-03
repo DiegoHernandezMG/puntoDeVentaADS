@@ -165,7 +165,7 @@ public class AgregarNuevoEmpleado extends javax.swing.JFrame {
                 jButtonRegresarActionPerformed(evt);
             }
         });
-        txt_pat.add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 420, 110, -1));
+        txt_pat.add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 420, 110, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
         jLabel13.setText("EMPLEADO");
@@ -184,7 +184,7 @@ public class AgregarNuevoEmpleado extends javax.swing.JFrame {
                 btn_EditarEmpleadoActionPerformed(evt);
             }
         });
-        txt_pat.add(btn_EditarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, -1, -1));
+        txt_pat.add(btn_EditarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -335,8 +335,8 @@ public class AgregarNuevoEmpleado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_AgregarEmpleado;
-    private javax.swing.JButton btn_EditarEmpleado;
+    public javax.swing.JButton btn_AgregarEmpleado;
+    public javax.swing.JButton btn_EditarEmpleado;
     public javax.swing.JComboBox<String> cmb_tipoEmp;
     public javax.swing.JComboBox<String> cmb_turnoEmp;
     private javax.swing.JButton jButtonRegresar;

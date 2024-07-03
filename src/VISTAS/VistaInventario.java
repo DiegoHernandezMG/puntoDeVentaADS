@@ -68,7 +68,7 @@ public class VistaInventario extends javax.swing.JFrame {
         model.setRowCount(0); // Limpiar el modelo de tabla existente
 
         for (Libro libro : libros) {
-            model.addRow(new Object[]{libro.getId(), libro.getTituloLibro(), String.join(", ", libro.getAutores()), libro.getEditorial(), libro.getPrecioLibro(), libro.getStockLibro(),"edtiar"});
+            model.addRow(new Object[]{libro.getId(), libro.getTituloLibro(), String.join(", ", libro.getAutores()), libro.getEditorial(), libro.getPrecioLibro(), libro.getStockLibro(),"editar"});
         }
         
         // Ordenar por la primera columna (id)
@@ -85,9 +85,9 @@ public class VistaInventario extends javax.swing.JFrame {
                    int row = tabla_inventario.getSelectedRow();
                     Inventario inventario = new Inventario();
                     List<Libro> libros = inventario.inventario();
-
+                    setVisible(false);
                    
-                     Libro libro = libros.get(row); // Obtener el libro de la lista usando el índice de la fila
+                    Libro libro = libros.get(row); // Obtener el libro de la lista usando el índice de la fila
                     abrirFormularioAgregarNuevoLibro(libro);
             }
         }));
