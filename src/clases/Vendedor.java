@@ -20,6 +20,7 @@ public class Vendedor extends Empleado{
     
     Connection conn = null;
     private ArrayList<Libro> listaDeCompra;
+    ArrayList<Integer> arregloEnteros;
     public int cantidadComprada;
     
     int idLibro;
@@ -40,10 +41,12 @@ public class Vendedor extends Empleado{
     public Vendedor(int id, String usuario, String contrasenia, char turno, String nombre, String apePaterno, String apeMaterno, char estatusEmpleado, int tipo) {
         super(id, usuario, contrasenia, turno, nombre, apePaterno, apeMaterno, estatusEmpleado, tipo);
         this.listaDeCompra = new ArrayList<>(); // Inicializar listaDeCompra
+        this.arregloEnteros = new ArrayList<>();
     }
     
-    public void agregarLibroALaListaDeCompra(Libro libro){
+    public void agregarLibroALaListaDeCompra(Libro libro, Integer cantidad){
         listaDeCompra.add(libro);
+        arregloEnteros.add(cantidad);
         
         for (Libro libro1 : listaDeCompra) {
             System.out.println(libro1);
@@ -52,6 +55,10 @@ public class Vendedor extends Empleado{
     
     public ArrayList<Libro> getListaDeCompra() {
         return listaDeCompra;
+    } 
+    
+    public ArrayList<Integer> getCantidades() {
+        return arregloEnteros;
     } 
     
     public void agregarALista(String idLibro, int cantidad){
@@ -127,7 +134,7 @@ public class Vendedor extends Empleado{
                     int filasActualizadas = pstmt.executeUpdate();
                     
                     Libro libro1 = new Libro(this.idLibro, this.tituloLibro, this.precioLibro, this.stockLibro, this.resumenLibro, this.isbnLibro, "Hola", "hola", this.descuentoLibro, autores,  this.portadaLibro);
-                    agregarLibroALaListaDeCompra(libro1);
+                    agregarLibroALaListaDeCompra(libro1, cantidad);
                     System.out.println("Filas actualizadas: " + filasActualizadas);
                 } catch (Exception e) {
                     e.printStackTrace();

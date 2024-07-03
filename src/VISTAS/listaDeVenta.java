@@ -33,6 +33,7 @@ public class ListaDeVenta extends javax.swing.JFrame {
         if (empleado instanceof Vendedor) {
             Vendedor vendedor = (Vendedor) empleado;
             ArrayList<Libro> listaDeCompra = vendedor.getListaDeCompra();
+            ArrayList<Integer> arregloCantidades = vendedor.getCantidades();
             
             for (Libro libro : listaDeCompra) {
                 Object[] row = {libro.getId(), libro.getTituloLibro(), libro.getPrecioLibro()};

@@ -253,7 +253,7 @@ public class VistaInventario extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, -1, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, 40));
 
         btn_regresar.setBackground(new java.awt.Color(209, 59, 83));
         btn_regresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -264,7 +264,7 @@ public class VistaInventario extends javax.swing.JFrame {
                 btn_regresarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 330, 150, 40));
+        jPanel1.add(btn_regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 150, 40));
 
         lbl_logo.setText("logo");
         lbl_logo.setToolTipText("");
@@ -297,7 +297,7 @@ public class VistaInventario extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
